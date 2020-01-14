@@ -1,0 +1,15 @@
+/* IDE */
+.idea
+
+/* Composer */
+vendor
+
+/* Node */
+node_modules
+package-lock.json
+
+/* App */
+config/database.php
+config/config.php
+public/css
+public/js
