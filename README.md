@@ -14,8 +14,12 @@ composer install
 ``` console
 npm install
 ```
-4. Rename **config/_database.php** to **database.php** and enter database info.
+4. Compile css and js
+``` console
+npm run dev
+```
+5. Rename **config/_database.php** to **database.php** and enter database info.
 
-5. Rename **config/_config.php** to **config.php** and fill in **name** and **root**.
+6. Rename **config/_config.php** to **config.php** and fill in **name** and **root**.
 
 ***
