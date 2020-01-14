@@ -1,5 +1,5 @@
 # ProjectVideo
-Online leaning platform
+Online learning platform
 
 # Installation
 1. Clone the repository
@@ -16,6 +16,6 @@ npm install
 ```
 4. Rename **config/_database.php** to **database.php** and enter database info.
 
-5. Rename **config/_config.php** to **config.php** and fill in data.
+5. Rename **config/_config.php** to **config.php** and fill in **name** and **root**.
 
 ***
