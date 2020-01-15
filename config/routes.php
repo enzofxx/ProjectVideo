@@ -5,6 +5,10 @@ use App\Core\Router;
 /* Index */
 Router::get("", "indexController@index")->name('home');
 
+/* Course */
+
+Router::get("/course", "CourseController@courses")->name('course.courses');
+Router::get("/course/videos", "CourseController@videos")->name('course.videos');
 
 
 
