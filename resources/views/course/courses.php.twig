@@ -21,60 +21,22 @@
         <!-- Main -->
         <div class="col-sm-9">
             <div>
-                <h1 class="text-center mb-5 mt-5">Visi kursai</h1>
+                <h1 class="text-center mb-3 pb-3 border-bottom border-dark">Visi kursai</h1>
             </div>
             <div class="row mx-auto">
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="{{ route('course.videos') }}">
-                            <img src="https://erasmuscoursescroatia.com/wp-content/uploads/2019/12/Online-courses.jpg"
-                                 alt="CourseName1" style="width:100%">
-                            <div class="caption text-center">
-                                <a href="{{ route('course.videos') }}"
-                                   class="btn btn-secondary btn-lg active mt-1 mb-5"
-                                   role="button" aria-pressed="true">Žiūrėti</a>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="{{ route('course.videos') }}">
-                            <img src="https://erasmuscoursescroatia.com/wp-content/uploads/2019/12/Online-courses.jpg"
-                                 alt="2" style="width:100%">
-                            <div class="text-center">
-                                <a href="{{ route('course.videos') }}"
-                                   class="btn btn-secondary btn-lg active mt-1 mb-5"
-                                   role="button" aria-pressed="true">Žiūrėti</a>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="{{ route('course.videos') }}"">
-                        <img src="https://erasmuscoursescroatia.com/wp-content/uploads/2019/12/Online-courses.jpg"
-                             alt="CourseName3" style="width:100%">
-                        <div class="text-center">
-                            <a href="{{ route('course.videos') }}" class="btn btn-secondary btn-lg active mt-1 mb-5"
-                               role="button" aria-pressed="true">Žiūrėti</a>
+                {% for course in courses %}
+                    <div class="col-md-4 pb-3">
+                        <div class="thumbnail text-center border pt-2 shadow">
+                            <a href="{{ route('course.videos',{'course':course.id}) }}">
+                                <img src="{{ course.picture }}"
+                                     alt="course nr.{{ course.id }}" class="border">
+                                <div class="caption text-center pt-3">
+                                    <a href="{{ route('course.videos',{'course':course.id}) }}"
+                                       class="btn btn-secondary btn-lg active mt-1 mb-5 shadow"
+                                       role="button" aria-pressed="true">Žiūrėti</a>
+                                </div>
+                            </a>
                         </div>
-                        </a>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="{{ route('course.videos') }}">
-                            <img src="https://erasmuscoursescroatia.com/wp-content/uploads/2019/12/Online-courses.jpg"
-                                 alt="CourseName3" style="width:100%">
-                            <div class="text-center">
-                                <a href="{{ route('course.videos') }}" class="btn btn-secondary btn-lg active mt-1"
-                                   role="button" aria-pressed="true">Žiūrėti</a>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {% endblock %}
+                {% endfor %}
+{% endblock %}
