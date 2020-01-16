@@ -9,7 +9,8 @@ Router::get("", "indexController@index")->name('home');
 
 Router::get("/course", "CourseController@courses")->name('course.courses');
 Router::get("/course/videos", "CourseController@videos")->name('course.videos');
-
+Router::get("/admin", "AdminController@courses")->name('admin.courses');
+Router::get("/admin/course/videos", "AdminController@videos")->name('admin.videos');
 
 
 
