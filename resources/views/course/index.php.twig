@@ -27,11 +27,11 @@
                 {% for course in courses %}
                     <div class="col-md-4 pb-3">
                         <div class="thumbnail text-center border pt-2 shadow">
-                            <a href="{{ route('course.videos',{'course':course.id}) }}">
+                            <a href="{{ route('course.show',{'course':course.id}) }}">
                                 <img src="{{ course.picture }}"
                                      alt="course nr.{{ course.id }}" class="border">
                                 <div class="caption text-center pt-3">
-                                    <a href="{{ route('course.videos',{'course':course.id}) }}"
+                                    <a href="{{ route('course.show',{'course':course.id}) }}"
                                        class="btn btn-secondary btn-lg active mt-1 mb-5 shadow"
                                        role="button" aria-pressed="true">Žiūrėti</a>
                                 </div>
