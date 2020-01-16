@@ -4,7 +4,6 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
 use App\Core\Config;
-use App\Topic;
 
 class IndexController extends Controller
 {
