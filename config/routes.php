@@ -8,7 +8,11 @@ Router::get("", "indexController@index")->name('home');
 /* Course */
 
 Router::get("/course", "CourseController@courses")->name('course.courses');
+Router::get("/course/videos", "CourseController@videos")->name('course.videos');
+Router::get("/admin", "AdminController@courses")->name('admin.courses');
+Router::get("/admin/course/videos", "AdminController@videos")->name('admin.videos');
 Router::get("/course/videos/{course}", "CourseController@videos")->name('course.videos');
+
 
 
 
