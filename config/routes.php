@@ -2,20 +2,15 @@
 
 use App\Core\Router;
 
+/*---- BackOffice ----*/
 /* Index */
-Router::get("", "indexController@index")->name('home');
-
+Router::get("/admin", "Admin\IndexController@index")->name('admin.index');
 /* Course */
 
-Router::get("/course", "CourseController@courses")->name('course.courses');
-Router::get("/course/videos", "CourseController@videos")->name('course.videos');
-Router::get("/admin", "AdminController@courses")->name('admin.courses');
-Router::get("/admin/course/videos", "AdminController@videos")->name('admin.videos');
-Router::get("/course/videos/{course}", "CourseController@videos")->name('course.videos');
-
-
-
-
+/*---- FrontOffice ----*/
+/* Index */
+Router::get("", "CourseController@index")->name('home');
+Router::get("/course/{course}", "CourseController@show")->name('course.show');
 
 
 

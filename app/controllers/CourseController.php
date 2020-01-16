@@ -8,18 +8,18 @@ use App\Lectures;
 
 class CourseController extends controller
 {
-    public function courses()
+    public function index()
     {
         $courses = Courses::select('*')->getall();
-        return view('course/courses', ['courses' => $courses]);
+        return view('course/index', ['courses' => $courses]);
     }
 
-    public function videos($id)
+    public function show($id)
     {
         $lecture = Lectures::select('lectures.*')->where('lectures.courseId', '=', $id)->getAll();
 
         if(!empty($lecture)) {
-            return view('course/videos', ['lectures' => $lecture]);
+            return view('course/show', ['lectures' => $lecture]);
         }
         else
             return view("errors/error404");
