@@ -10,7 +10,6 @@ class IndexController extends Controller
 {
     public function index()
     {
-        echo ('<h1>This is admin panel</h1>');
-        return view('index', ["title" => Config::get('config', 'name')]);
+        return view('admin/index', ["title" => Config::get('config', 'name')]);
     }
 }

@@ -13,6 +13,7 @@ Router::get("", "CourseController@index")->name('home');
 Router::get("/course/{course}", "CourseController@show")->name('course.show');
 
 
+
 /* EXAMPLES */
 
     /* Topic  */
