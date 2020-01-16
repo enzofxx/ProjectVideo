@@ -1,7 +1,7 @@
 <!-- Top Navigation -->
 
 <nav class="navbar navbar-dark bg-dark p-0 shadow">
-    <a class="navbar-brand text-lg-center" href="{{ route('home') }}">Anglų kalbos kursai</a>
+    <a class="navbar-brand text-lg-center" href="{{ route('home') }}"><i class="fas fa-chalkboard"></i> Anglų kalbos kursai</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item">
             <a class="nav-link" data-toggle="modal" data-target="#modalLoginForm" href="">Prisijungti</a>
@@ -30,14 +30,15 @@
                 </div>
 
                 <div class="md-form mb-4">
-                    <i class="fas fa-lock prefix grey-text"></i>
+                    <i class="fas fa-key"></i>
                     <label data-error="wrong" data-success="right" for="defaultForm-pass">Slaptažodis</label>
                     <input type="password" id="defaultForm-pass" class="form-control validate" placeholder="password">
                 </div>
 
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-success">Prisijungti</button>
+
+                <button class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Prisijungti</button>
             </div>
         </div>
     </div>
