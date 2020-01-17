@@ -5,6 +5,8 @@ use App\Core\Router;
 /*---- BackOffice ----*/
 /* Index */
 Router::get("/admin", "Admin\IndexController@index")->name('admin.index');
+Router::get("/admin/addcourse", "Admin\AdminController@addCourse")->name('admin.addCourse');
+Router::put("/admin", "Admin\AdminController@storeCourse")->name('admin.storeCourse');
 /* Course */
 
 /*---- FrontOffice ----*/
