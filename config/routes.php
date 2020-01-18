@@ -8,6 +8,8 @@ Router::get("/admin", "Admin\IndexController@index")->name('admin.index');
 
 /* Statistics */
 
+Router::get("/admin/addcourse", "Admin\AdminController@addCourse")->name('admin.addCourse');
+Router::put("/admin", "Admin\AdminController@storeCourse")->name('admin.storeCourse');
 Router::get("/admin/users", "Admin\AdminController@showUser")->name('admin.users');
 Router::get("admin/users/page", "Admin\AdminController@userPagination")->name('admin.page');
 

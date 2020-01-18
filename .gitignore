@@ -13,3 +13,5 @@ config/database.php
 config/config.php
 public/css
 public/js
+resources/uploads/*
+!resources/uploads/.gitkeep
