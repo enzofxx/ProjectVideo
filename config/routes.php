@@ -9,7 +9,7 @@ Router::get("/admin", "Admin\IndexController@index")->name('admin.index');
 /* Statistics */
 
 Router::get("/admin/users", "Admin\AdminController@showUser")->name('admin.users');
-Router::get("admin/users/page", "Admin\AdminController@pagination")->name('admin.page');
+Router::get("admin/users/page", "Admin\AdminController@userPagination")->name('admin.page');
 
 /* Course */
 

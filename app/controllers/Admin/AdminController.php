@@ -15,7 +15,7 @@ class AdminController extends controller
         return view('admin/users', ['users' => $users]);
     }
 
-    public function pagination()
+    public function userPagination()
     {
         $perPage = 10;
         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
