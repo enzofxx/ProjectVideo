@@ -5,9 +5,21 @@ use App\Core\Router;
 /*---- BackOffice ----*/
 /* Index */
 Router::get("/admin", "Admin\IndexController@index")->name('admin.index');
-Router::get("/admin/addcourse", "Admin\AdminController@addCourse")->name('admin.addCourse');
 Router::put("/admin", "Admin\AdminController@storeCourse")->name('admin.storeCourse');
+
 /* Course */
+Router::get("/admin/course/add", "Admin\CourseController@addCourse")->name('admin.addCourse');
+Router::get("/admin/course/{courseId}", "Admin\CourseController@show")->name('admin.showCourse');
+Router::get("/admin/course/{courseId}/edit", "Admin\CourseController@edit")->name('admin.editCourse');
+
+/* Users */
+Router::get("/admin/user", "Admin\UserController@index")->name('admin.user');
+
+/* Video Statistics */
+Router::get("/admin/videostats", "Admin\VideoStatsController@index")->name('admin.videostats');
+
+/* Income */
+Router::get("/admin/income", "Admin\IncomeController@index")->name('admin.income');
 
 /*---- FrontOffice ----*/
 /* Index */

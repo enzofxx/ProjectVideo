@@ -8,12 +8,30 @@ use App\Courses;
 use App\Lectures;
 use Symfony\Component\HttpFoundation\Request;
 
-class AdminController extends Controller
+class CourseController extends Controller
 {
+
     public function addCourse()
     {
         $lectures = Lectures::select('lectures.*')->limit(5)->getAll();
         return view('admin/addCourse', ['lectures' => $lectures]);
+    }
+
+    public function show($id)
+    {
+        $courseLectures = Lectures::select('lectures.*')->where('lectures.courseId', '=', $id)->getAll();
+
+
+        if(!empty($courseLectures)) {
+            return view('admin/showCourse', ['lectures' => $courseLectures]);
+        }
+        else
+            return view("errors/error404");
+    }
+
+    public function edit($id)
+    {
+        return view('admin/editCourse', ['id' => $id]);
     }
 
     public function storeCourse(Request $request) {
@@ -39,7 +57,7 @@ class AdminController extends Controller
             Courses::insert($query);
             $lecturesQuery = ["courseId"=>get_object_vars(Courses::select('*')->max('id')->get())['MAX(id)'], "videoUrl"=>'https://www.youtube.com/embed/wjipJEho3EU'];
             Lectures::insert($lecturesQuery);
-        return view('admin/index', ["title" => Config::get('config', 'name')]);
+            return view('admin/index', ["title" => Config::get('config', 'name')]);
         }
     }
 }
