@@ -2,9 +2,7 @@
 
 {% block content %}
 
-
-    <!-- Navigation -->
-
+    <!-- Top Navigation -->
 
     <nav class="navbar navbar-light bg-light p-0 ">
         <h3 class="col-xs-10 col-md-10 text-center">Administratoriaus skydelis:</h3>
@@ -12,23 +10,17 @@
         <p class="col-xs-1 col-md-1 text-center">Profilis</p>
     </nav>
 
-    <!-- Content -->
 
     <div class="container d-flex pt-3">
-        <div class="col-md-4 bg-gradient-light">
-            <div class="">
-                <h4>Statistika</h4>
-                <p>Video statistika</p>
-                <p>Mokiniai + informacija</p>
-                <p>Apyvarta</p>
-                <h4>Video</h4>
-                <p>Patalpinti naują video</p>
-                <p>Sukurti naują kursą</p>
-                <p>Redaguoti esamą kursą</p>
-            </div>
-        </div>
 
-        <div class=" col-md-7 d-flex">
+    <!-- Side navigation  -->
+
+    {{ include('components/adminSideBarNav.html.twig') }}
+
+
+        <!-- Content -->
+
+        <div class=" col-md-8 d-flex">
             <div class="d-flex">
                 <div class="">
                     <div class="row mx-auto ">
