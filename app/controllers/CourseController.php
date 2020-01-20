@@ -10,7 +10,7 @@ class CourseController extends controller
 {
     public function index()
     {
-        $courses = Courses::select('*')->getall();
+        $courses = Courses::select('*')->getAll();
         return view('course/index', ['courses' => $courses]);
     }
 
