@@ -1,14 +1,16 @@
 <?php
-
 namespace App\Controllers\Admin;
 
-use App\Controllers\Controller;
 use App\Core\Config;
+use App\Courses;
 
-class IndexController extends Controller
+class IndexController
 {
     public function index()
     {
-        return view('admin/index', ["title" => Config::get('config', 'name')]);
+        $courses = Courses::select('*')->getAll();
+        return view('admin/index', ["title" => Config::get('config', 'name'),
+                                            "courses" => $courses]);
     }
+
 }
