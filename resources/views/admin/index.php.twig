@@ -15,35 +15,36 @@
 
     <div class="container-fluid pt-3">
 
-    <div class="row">
-    <!-- Side navigation  -->
+        <div class="row">
+            <!-- Side navigation  -->
 
-    {{ include('components/adminSideBarNav.html.twig') }}
+            {{ include('components/adminSideBarNav.html.twig') }}
 
 
-        <!-- Content -->
+            <!-- Content -->
 
-        <div class="col">
-            <div class="row">
-                {% for course in courses %}
-                <div class="col-12 col-md-6 col-lg-4 justify-content-center text-center">
-                    <figure class="figure">
-                        <figcaption class="figure-caption">
-                            <a href="{{ route('admin.showCourse', {'courseId':course.id}) }}">
-                                <img src="{{ course.picture }}" class="figure-img img-fluid img-thumbnail" alt="Figure image">
-                            </a>
-                            <h6>{{ course.name }} <small>({{ course.createdOn}} )</small></h6>
-                            <p>{{ course.name }}</p>
-                            <p class="h4">
-                                {{ course.price }} <i class="fas fa-euro-sign"></i>
-                            </p>
-                        </figcaption>
-                    </figure>
+            <div class="col">
+                <div class="row">
+                    {% for course in courses %}
+                        <div class="col-12 col-md-6 col-lg-4 justify-content-center text-center">
+                            <figure class="figure">
+                                <figcaption class="figure-caption">
+                                    <a href="{{ route('admin.showCourse', {'courseId':course.id}) }}">
+                                        <img src="{{ course.picture }}" class="figure-img img-fluid img-thumbnail"
+                                             alt="Figure image">
+                                    </a>
+                                    <h6>{{ course.name }} <small>({{ course.createdOn }} )</small></h6>
+                                    <p>{{ course.name }}</p>
+                                    <p class="h4">
+                                        {{ course.price }} <i class="fas fa-euro-sign"></i>
+                                    </p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    {% endfor %}
+
                 </div>
-                {% endfor %}
-
             </div>
         </div>
-    </div>
     </div>
 {% endblock %}
