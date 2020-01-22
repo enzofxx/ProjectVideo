@@ -2,55 +2,49 @@
 
 {% block content %}
 
-    <div class="container-fluid d-flex pt-3 pr-5">
-        <!-- Side navigation  -->
+    <div class="container row text-center">
 
-        {{ include('components/adminSideBarNav.html.twig') }}
+        <div class="col">
+            <h1 class="mb-3 pb-3 border-bottom border-dark">Apyvarta</h1>
+        </div>
 
-        <!-- Content -->
+        <div class="w-100"></div>
 
-        <div class="row text-center pt-4">
+        <div class="col-md-5 border bg-light shadow ml-5 ">
+            <h1 class="font-weight-bold">Šis mėnesis</h1>
+            <p class="h2 text-success">
+                {{ thisMonthCount }} &#8364;
+            </p>
+        </div>
+        <div class="col-md-5 border bg-light shadow offset-1">
+            <h1 class="font-weight-bold">Šis metų ketvirtis</h1>
+            <p class="h2 text-success">
+                {{ thisHalfYearCount }} &#8364;
+            </p>
+        </div>
 
-            <div class="col">
-                <h1 class="text-center mb-3 pb-3 border-bottom border-dark">Apyvarta</h1>
-            </div>
+        <div class="w-100"></div>
 
-            <div class="w-100"></div>
-            <div class="col-md-5  border bg-light shadow ml-5">
-                <h1 class="font-weight-bold">Šis mėnesis</h1>
-                <p class="h2 text-success">
-                    {{ thisMonthCount }} &#8364;
-                </p>
-            </div>
-            <div class="col-md-5 border bg-light shadow offset-1">
-                <h1 class="font-weight-bold">Šis metų ketvirtis</h1>
-                <p class="h2 text-success">
-                    {{ thisHalfYearCount }} &#8364;
-                </p>
-            </div>
-            <div class="w-100"></div>
+        <div class="col-md-5 border bg-light shadow ml-5">
+            <h1 class="font-weight-bold">Šis pusmetis</h1>
+            <p class="h2 text-success">
+                {{ thisQuarterCount }} &#8364;
+            </p>
+        </div>
+        <div class="col-md-5 border bg-light shadow offset-1">
+            <h1 class="font-weight-bold">Šie metai</h1>
+            <p class="h2 text-success">
+                {{ thisYearCount }} &#8364;
+            </p>
+        </div>
 
-            <div class="col-md-5 border bg-light shadow ml-5">
-                <h1 class="font-weight-bold">Šis pusmetis</h1>
-                <p class="h2 text-success">
-                    {{ thisQuarterCount }} &#8364;
-                </p>
-            </div>
-            <div class="col-md-5 border bg-light shadow offset-1">
-                <h1 class="font-weight-bold">Šie metai</h1>
-                <p class="h2 text-success">
-                    {{ thisYearCount }} &#8364;
-                </p>
-            </div>
+        <div class="w-100"></div>
 
-            <div class="w-100"></div>
-
-            <div class="offset-3 col-md-6 border bg-light shadow">
-                <h1 class="font-weight-bold">Praeiti metai</h1>
-                <p class="h2 text-success">
-                    {{ lastYearCount }} &#8364;
-                </p>
-            </div>
+        <div class="offset-3 col-md-6 border bg-light shadow">
+            <h1 class="font-weight-bold">Praeiti metai</h1>
+            <p class="h2 text-success">
+                {{ lastYearCount }} &#8364;
+            </p>
         </div>
     </div>
 {% endblock %}

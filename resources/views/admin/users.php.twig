@@ -2,73 +2,67 @@
 
 {% block content %}
 
-    <!-- Content -->
-
-    <div class="container-fluid d-flex pt-3 pr-5">
-        <!-- Side navigation  -->
-
-        {{ include('components/adminSideBarNav.html.twig') }}
-
-        <div class="border bg-light p-3">
-            <div>
-                <h1 class="text-center mb-3 pb-3 border-bottom border-dark">User list</h1>
-            </div>
-            <table class="table">
-                <thead>
+    <div class="border bg-light p-3">
+        <div>
+            <h1 class="text-center mb-3 pb-3 border-bottom border-dark">User list</h1>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Created on</th>
+                <th scope="col">Visit count</th>
+                <th scope="col">Last login</th>
+                <th scope="col">Send a letter</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Surname</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Created on</th>
-                    <th scope="col">Visit count</th>
-                    <th scope="col">Last login</th>
-                    <th scope="col">Send a letter</th>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.surname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.createdOn }}</td>
+                    <td>{{ user.visitCount }}</td>
+                    <td>{{ user.lastLogin }}</td>
+                    <td>
+                        <button class="btn {% if user.lastLogin|date("U") <= "-14days"|date("U") %} btn-danger {% else %} btn-secondary {% endif %} active"
+                                onclick="">Send email
+                        </button>
+                    </td>
                 </tr>
-                </thead>
-                <tbody>
-                {% for user in users %}
-                    <tr>
-                        <td>{{ user.name }}</td>
-                        <td>{{ user.surname }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.createdOn }}</td>
-                        <td>{{ user.visitCount }}</td>
-                        <td>{{ user.lastLogin }}</td>
-                        <td>
-                            <button class="btn {% if user.lastLogin|date("U") <= "-14days"|date("U") %} btn-danger {% else %} btn-secondary {% endif %} active" onclick="">Send email</button>
-                        </td>
-                    </tr>
-                {% endfor %}
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> <!-- A gap after the last table's record-->
-                </tbody>
-            </table>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr> <!-- A gap after the last table's record-->
+            </tbody>
+        </table>
 
-            <div class="d-flex justify-content-center align-items-center">
-                <nav aria-label="Page navigation example" class="text-center">
-                    <ul class="pagination m-0">
-                        <li class="page-item{{ (page <= 1) ? ' disabled' }}"><a class="page-link"
-                                                                                href="{{ route('admin.page', {'page' : (page <= 1 ? 1 : page - 1)}) }}">Previous</a>
+        <div class="d-flex justify-content-center align-items-center">
+            <nav aria-label="Page navigation example" class="text-center">
+                <ul class="pagination m-0">
+                    <li class="page-item{{ (page <= 1) ? ' disabled' }}"><a class="page-link"
+                                                                            href="{{ route('admin.page', {'page' : (page <= 1 ? 1 : page - 1)}) }}">Previous</a>
+                    </li>
+                    {% for i in range((page - 1 <= 1 ? 1 : page - 1), (page + 1 >= pageCount ? pageCount : page + 1)) %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="{{ route('admin.page', {'page' : i}) }}">{{ i }}</a>
                         </li>
-                        {% for i in range((page - 1 <= 1 ? 1 : page - 1), (page + 1 >= pageCount ? pageCount : page + 1)) %}
-                            <li class="page-item"><a class="page-link"
-                                                     href="{{ route('admin.page', {'page' : i}) }}">{{ i }}</a>
-                            </li>
-                        {% endfor %}
-                        <li class="page-item{{ (page >= pageCount) ? ' disabled' }}"><a class="page-link"
-                                                                                        href="{{ route('admin.page', {'page' : (page >= pageCount ? pageCount : page + 1)}) }}">Next</a>
-                        </li>
-                    </ul>
-                    <div class="my-2">
-                        Page {{ page }} - {{ pageCount }}
-                    </div>
-                </nav>
-            </div>
+                    {% endfor %}
+                    <li class="page-item{{ (page >= pageCount) ? ' disabled' }}"><a class="page-link"
+                                                                                    href="{{ route('admin.page', {'page' : (page >= pageCount ? pageCount : page + 1)}) }}">Next</a>
+                    </li>
+                </ul>
+                <div class="my-2">
+                    Page {{ page }} - {{ pageCount }}
+                </div>
+            </nav>
         </div>
     </div>
 

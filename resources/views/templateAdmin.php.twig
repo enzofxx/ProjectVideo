@@ -11,6 +11,16 @@
 </head>
 <body>
 {{ include('components/adminTopNavbar.html.twig') }}
-{% block content %}{% endblock %}
+
+<div class="container-fluid pt-3">
+    <div class="row">
+
+        <!-- Side navigation  -->
+        {{ include('components/adminSideBarNav.html.twig') }}
+
+        {% block content %}{% endblock %}
+    </div>
+</div>
+
 </body>
 </html>
