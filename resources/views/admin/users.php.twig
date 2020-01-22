@@ -45,7 +45,7 @@
                         <td>{{ user.visitCount }}</td>
                         <td>{{ user.lastLogin }}</td>
                         <td>
-                            <button class="btn {% if user.lastLogin|date("U") <= "-14days"|date("U") %} btn-danger {% endif %} btn-secondary active" onclick="">Send email</button>
+                            <button class="btn {% if user.lastLogin|date("U") <= "-14days"|date("U") %} btn-danger {% else %} btn-secondary {% endif %} active" onclick="">Send email</button>
                         </td>
                     </tr>
                 {% endfor %}

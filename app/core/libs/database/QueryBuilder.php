@@ -181,7 +181,7 @@ class QueryBuilder
             } elseif (! in_array($op, $this->op) || $op == false) {
                 $where = $type . $where . ' = ' . $this->escape($op);
             } else {
-                $where = $type . $where . ' ' . $op . ' ' . $this->escape($val);
+                $where = $type . $where . ' ' . $op . ' ' . $val;
             }
         }
         if ($this->grouped) {
