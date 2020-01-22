@@ -5,11 +5,15 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
 use App\Core\Config;
+use App\Courses;
+use App\Lectures;
 
-class VideoStatsController
+class VideoStatsController extends Controller
 {
     public function index()
     {
-        return view('admin/videostats', ["title" => Config::get('config', 'name')]);
+
+        $lectures = Lectures::select('*')->getAll();
+        return view('admin/videostats',  ["lectures" => $lectures]);
     }
 }

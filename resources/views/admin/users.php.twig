@@ -2,29 +2,23 @@
 
 {% block content %}
 
-    <!-- Navigation -->
-
-    <nav class="navbar navbar-light bg-light p-0 ">
-        <h3 class="col-xs-10 col-md-10 text-center">Administratoriaus skydelis:</h3>
-        <p class="col-xs-1 col-md-1 text-center">Atsijungti</p>
-        <p class="col-xs-1 col-md-1 text-center">Profilis</p>
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-light bg-light p-3">
+        <h1 class="h4 ml-4">Administratoriaus Skydelis</h1>
+        <a href="{{ route('home') }}" class="font-weight-bold text-secondary text-decoration-none ml-auto">
+            <p class="col-xs-1 col-md-1 text-center">
+                <i class="fas fa-sign-out-alt h2 float-right"></i>
+            </p>
+        </a>
     </nav>
 
     <!-- Content -->
 
     <div class="container-fluid d-flex pt-3 pr-5">
-        <div class="col-md-4 bg-gradient-light">
-            <div class="">
-                <h4>Statistika</h4>
-                <p>Video statistika</p>
-                <p>Mokiniai + informacija</p>
-                <p>Apyvarta</p>
-                <h4>Video</h4>
-                <p>Patalpinti naują video</p>
-                <p>Sukurti naują kursą</p>
-                <p>Redaguoti esamą kursą</p>
-            </div>
-        </div>
+        <!-- Side navigation  -->
+
+        {{ include('components/adminSideBarNav.html.twig') }}
+
         <div class="border bg-light p-3">
             <div>
                 <h1 class="text-center mb-3 pb-3 border-bottom border-dark">User list</h1>

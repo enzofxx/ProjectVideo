@@ -6,26 +6,21 @@
     <!-- Navigation -->
 
 
-    <nav class="navbar navbar-light bg-light p-0 ">
-        <h3 class="col-xs-10 col-md-10 text-center">Administratoriaus skydelis:</h3>
-        <p class="col-xs-1 col-md-1 text-center">Atsijungti</p>
-        <p class="col-xs-1 col-md-1 text-center">Profilis</p>
+    <nav class="navbar navbar-light bg-light py-3 px-5">
+        <h1 class="h4 ml-4">Administratoriaus Skydelis</h1>
+        <a href="{{ route('home') }}" class="font-weight-bold text-secondary text-decoration-none ml-auto">
+            <p class="col-xs-1 col-md-1 text-center">
+                <i class="fas fa-sign-out-alt h2 float-right"></i>
+            </p>
+        </a>
     </nav>
 
-    <!-- Content -->
+    <div class="container-fluid d-flex pt-3">
 
-    <div class="container d-flex pt-3">
-        <div class="col-md-3 bg-gradient-light">
-            <div class="">
-                <h4>Statistika</h4>
-                <p>Video statistika</p>
-                <p>Mokiniai + informacija</p>
-                <p>Apyvarta</p>
-                <h4>Video</h4>
-                <p>Sukurti naują kursą</p>
-                <p>Redaguoti esamą kursą</p>
-            </div>
-        </div>
+        <!-- Side navigation  -->
+
+        {{ include('components/adminSideBarNav.html.twig') }}
+
         <div class=" col-md-9 d-flex bg-light border border-dark">
             <form class="" method="post" action="{{ route('admin.storeCourse') }}" enctype="multipart/form-data">
                 {{ method('PUT') }}
