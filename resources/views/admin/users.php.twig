@@ -3,14 +3,8 @@
 {% block content %}
 
     <!-- Top Navigation -->
-    <nav class="navbar navbar-light bg-light p-3">
-        <h1 class="h4 ml-4">Administratoriaus Skydelis</h1>
-        <a href="{{ route('home') }}" class="font-weight-bold text-secondary text-decoration-none ml-auto">
-            <p class="col-xs-1 col-md-1 text-center">
-                <i class="fas fa-sign-out-alt h2 float-right"></i>
-            </p>
-        </a>
-    </nav>
+
+    {{ include('components/adminTopNavbar.html.twig') }}
 
     <!-- Content -->
 
