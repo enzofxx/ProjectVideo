@@ -11,6 +11,7 @@ Router::put("/admin", "Admin\AdminController@storeCourse")->name('admin.storeCou
 Router::get("/admin/course/add", "Admin\CourseController@addCourse")->name('admin.addCourse');
 Router::get("/admin/course/{courseId}", "Admin\CourseController@show")->name('admin.showCourse');
 Router::get("/admin/course/{courseId}/edit", "Admin\CourseController@edit")->name('admin.editCourse');
+Router::get("/admin/addvideo", "Admin\CourseController@addvideo")->name('admin.addVideo');
 
 /* Users */
 Router::get("/admin/user", "Admin\UserController@index")->name('admin.user');
@@ -20,6 +21,7 @@ Router::get("/admin/videostats", "Admin\VideoStatsController@index")->name('admi
 
 /* Income */
 Router::get("/admin/income", "Admin\IncomeController@index")->name('admin.income');
+
 
 /*---- FrontOffice ----*/
 /* Index */

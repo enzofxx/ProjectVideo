@@ -60,4 +60,10 @@ class CourseController extends Controller
             return view('admin/index', ["title" => Config::get('config', 'name')]);
         }
     }
+
+    public function addvideo()
+    {
+        return view('admin/addVideo');
+    }
+
 }
