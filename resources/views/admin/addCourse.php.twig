@@ -3,13 +3,15 @@
 {% block content %}
 
 
-    <form class="col-md-6 d-flex bg-light border border-dark" method="post" action="{{ route('admin.storeCourse') }}" enctype="multipart/form-data">
+    <form class="col-md-6 d-flex bg-light border border-dark" method="post" action="{{ route('admin.storeCourse') }}"
+          enctype="multipart/form-data">
         {{ method('PUT') }}
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <label for="courseName">Kurso pavadinimas:</label>
-                    <input type="text" class="form-control" id="courseName" aria-describedby="emailHelp" name="name" required>
+                    <input type="text" class="form-control" id="courseName" aria-describedby="emailHelp" name="name"
+                           required>
                 </div>
                 <div class="form-group">
                     <label for="aboutCourse">Aprašymas:</label>
@@ -17,7 +19,8 @@
                 </div>
                 <div class="form-group">
                     <label for="coursePicture">Cover paveiksliukas:</label>
-                    <input type="file" class="form-control-file" id="coursePicture" name="picture" required accept="image/*"
+                    <input type="file" class="form-control-file" id="coursePicture" name="picture" required
+                           accept="image/*"
                            onchange="document.getElementById('pic').src = window.URL.createObjectURL(this.files[0])">
                 </div>
                 <img id="pic" class="border">
@@ -44,7 +47,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="reset" class="btn btn-primary" onclick="document.getElementById('pic').removeAttribute('src')">Išvalyti formą</button>
+                    <button type="reset" class="btn btn-primary"
+                            onclick="document.getElementById('pic').removeAttribute('src')">Išvalyti formą
+                    </button>
                     <button type="submit" class="btn btn-primary">Išsaugoti</button>
                 </div>
             </div>

@@ -2,37 +2,42 @@
 
 {% block content %}
 
-    <form class="col-md-6 d-flex bg-light border border-dark" method="post" action="{{ route('admin.updateCourse', {'courseId':course.id}) }}" enctype="multipart/form-data">
+    <form class="col-md-6 d-flex bg-light border border-dark" method="post"
+          action="{{ route('admin.updateCourse', {'courseId':course.id}) }}" enctype="multipart/form-data">
         {{ method('PATCH') }}
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <label for="courseName">Kurso pavadinimas:</label>
-                    <input type="text" class="form-control" id="courseName" aria-describedby="emailHelp" name="name" value="{{ course.name }}" required>
+                    <input type="text" class="form-control" id="courseName" aria-describedby="emailHelp" name="name"
+                           value="{{ course.name }}" required>
                 </div>
                 <div class="form-group">
                     <label for="aboutCourse">Aprašymas:</label>
-                    <input type="text" class="form-control" id="aboutCourse" name="about"  value="{{ course.about }}"required>
+                    <input type="text" class="form-control" id="aboutCourse" name="about" value="{{ course.about }}"
+                           required>
                 </div>
                 <div class="form-group">
                     <label for="coursePicture">Cover paveiksliukas:</label>
-                    <input type="file" class="form-control-file r" id="coursePicture" name="picture"  style="display:none" accept="image/*"
+                    <input type="file" class="form-control-file r" id="coursePicture" name="picture"
+                           style="display:none" accept="image/*"
                            onchange="document.getElementById('pic').src = window.URL.createObjectURL(this.files[0])">
                 </div>
-                    <img id="pic" src="../../../{{ course.picture }}" alt="course nr.{{ course.id }}" class="border">
-                    <button type="button" class="btn btn-primary" id="OpenImgUpload">Pakeisti nuotrauka</button>
+                <img id="pic" src="../../../{{ course.picture }}" alt="course nr.{{ course.id }}" class="border">
+                <button type="button" class="btn btn-primary" id="OpenImgUpload">Pakeisti nuotrauka</button>
                 <div class="row">
                     <div class="col">
                         <label for="coursePrice">Kaina:</label>
-                        <input type="number" class="form-control" placeholder="" name="price"  value="{{ course.price }}"required>
+                        <input type="number" class="form-control" placeholder="" name="price" value="{{ course.price }}"
+                               required>
                     </div>
                     <div class="col">
                         <label for="dicountPrice">Kaina su nuolaida</label>
-                        <input type="number" class="form-control" placeholder="" name="dicountPrice" >
+                        <input type="number" class="form-control" placeholder="" name="dicountPrice">
                     </div>
                     <div class="col">
                         <label for="validTo">Nuolaida galioja iki:</label>
-                        <input type="date" class="form-control" placeholder="" name="validTo" >
+                        <input type="date" class="form-control" placeholder="" name="validTo">
                     </div>
                 </div>
                 <div class="form-group">
