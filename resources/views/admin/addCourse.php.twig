@@ -1,77 +1,61 @@
-{% extends "template.php.twig" %}
+{% extends "templateAdmin.php.twig" %}
 
 {% block content %}
 
-    <!-- Top Navigation -->
-    <nav class="navbar navbar-light bg-light p-3">
-        <h1 class="h4 ml-4">Administratoriaus Skydelis</h1>
-        <a href="{{ route('home') }}" class="font-weight-bold text-secondary text-decoration-none ml-auto">
-            <p class="col-xs-1 col-md-1 text-center">
-                <i class="fas fa-sign-out-alt h2 float-right"></i>
-            </p>
-        </a>
-    </nav>
 
-
-    <div class="container-fluid pt-3">
+    <form class="col-md-6 d-flex bg-light border border-dark" method="post" action="{{ route('admin.storeCourse') }}" enctype="multipart/form-data">
+        {{ method('PUT') }}
         <div class="row">
-            <!-- Side navigation  -->
-            {{ include('components/adminSideBarNav.html.twig') }}
-            <!-- Content -->
-            <form class="col-md-6 d-flex bg-light border border-dark" method="post" action="{{ route('admin.storeCourse') }}" enctype="multipart/form-data">
-                {{ method('PUT') }}
+            <div class="col">
+                <div class="form-group">
+                    <label for="courseName">Kurso pavadinimas:</label>
+                    <input type="text" class="form-control" id="courseName" aria-describedby="emailHelp" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="aboutCourse">Aprašymas:</label>
+                    <input type="text" class="form-control" id="aboutCourse" name="about" required>
+                </div>
+                <div class="form-group">
+                    <label for="coursePicture">Cover paveiksliukas:</label>
+                    <input type="file" class="form-control-file" id="coursePicture" name="picture" required accept="image/*"
+                           onchange="document.getElementById('pic').src = window.URL.createObjectURL(this.files[0])">
+                </div>
+                <img id="pic" class="border">
                 <div class="row">
                     <div class="col">
-                        <div class="form-group">
-                            <label for="courseName">Kurso pavadinimas:</label>
-                            <input type="text" class="form-control" id="courseName" aria-describedby="emailHelp" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="aboutCourse">Aprašymas:</label>
-                            <input type="text" class="form-control" id="aboutCourse" name="about" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="coursePicture">Cover paveiksliukas:</label>
-                            <input type="file" class="form-control-file" id="coursePicture" name="picture" required accept="image/*"
-                                   onchange="document.getElementById('pic').src = window.URL.createObjectURL(this.files[0])">
-                        </div>
-                        <img id="pic" class="border">
-                        <div class="row">
-                            <div class="col">
-                                <label for="coursePrice">Kaina:</label>
-                                <input type="number" class="form-control" placeholder="" name="price" required>
-                            </div>
-                            <div class="col">
-                                <label for="dicountPrice">Kaina su nuolaida</label>
-                                <input type="number" class="form-control" placeholder="" name="dicountPrice" disabled>
-                            </div>
-                            <div class="col">
-                                <label for="validTo">Nuolaida galioja iki:</label>
-                                <input type="date" class="form-control" placeholder="" name="validTo" disabled>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck" value="published" name="status">
-                                <label class="form-check-label" for="gridCheck">
-                                    Rodyti pagrindiniame puslapyje
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button type="reset" class="btn btn-primary" onclick="document.getElementById('pic').removeAttribute('src')">Išvalyti formą</button>
-                            <button type="submit" class="btn btn-primary">Išsaugoti</button>
-                        </div>
+                        <label for="coursePrice">Kaina:</label>
+                        <input type="number" class="form-control" placeholder="" name="price" required>
                     </div>
-                    <div class="col-4 bg-gradient-light">
-                        <div class="col-4 bg-gradient-light">
-                            Cia YouTube playlist`ai
-                        </div>
+                    <div class="col">
+                        <label for="dicountPrice">Kaina su nuolaida</label>
+                        <input type="number" class="form-control" placeholder="" name="dicountPrice" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="validTo">Nuolaida galioja iki:</label>
+                        <input type="date" class="form-control" placeholder="" name="validTo" disabled>
                     </div>
                 </div>
-            </form>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" value="published" name="status">
+                        <label class="form-check-label" for="gridCheck">
+                            Rodyti pagrindiniame puslapyje
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="reset" class="btn btn-primary" onclick="document.getElementById('pic').removeAttribute('src')">Išvalyti formą</button>
+                    <button type="submit" class="btn btn-primary">Išsaugoti</button>
+                </div>
+            </div>
+            <div class="col-4 bg-gradient-light">
+                <div class="col-4 bg-gradient-light">
+                    Cia YouTube playlist`ai
+                </div>
+            </div>
         </div>
-    </div>
+    </form>
+
 
 {% endblock %}
 

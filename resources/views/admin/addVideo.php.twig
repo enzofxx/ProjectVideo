@@ -1,34 +1,10 @@
-{% extends "template.php.twig" %}
+{% extends "templateAdmin.php.twig" %}
 
 {% block content %}
-
-    <!-- Top Navigation -->
-    <nav class="navbar navbar-light bg-light p-3">
-        <h1 class="h4 ml-4">Administratoriaus Skydelis</h1>
-        <a href="{{ route('home') }}" class="font-weight-bold text-secondary text-decoration-none ml-auto">
-            <p class="col-xs-1 col-md-1 text-center">
-                <i class="fas fa-sign-out-alt h2 float-right"></i>
-            </p>
-        </a>
-    </nav>
-
-
-    <div class="container-fluid pt-3">
-
+    <div class="col">
         <div class="row">
-            <!-- Side navigation  -->
-
-            {{ include('components/adminSideBarNav.html.twig') }}
-
-
-            <!-- Content -->
-
-            <div class="col">
-                <div class="row">
-                    <a class="display-4 text-center text-decoration-none" href="https://www.youtube.com/"><i
-                                class="fab fa-youtube"></i><br>Įkelti naują video klipą per YouTube </i> platformą</a>
-                </div>
-            </div>
+            <a class="display-4 text-center text-decoration-none" href="https://www.youtube.com/"><i
+                        class="fab fa-youtube"></i><br>Įkelti naują video klipą per YouTube </i> platformą</a>
         </div>
     </div>
 {% endblock %}
