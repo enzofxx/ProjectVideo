@@ -10,8 +10,8 @@ Router::get("/admin", "Admin\IndexController@index")->name('admin.index');
 Router::get("/admin/course/add", "Admin\CourseController@addCourse")->name('admin.addCourse');
 Router::put("/admin/course/add", "Admin\CourseController@storeCourse")->name('admin.storeCourse');
 Router::get("/admin/course/{courseId}", "Admin\CourseController@show")->name('admin.showCourse');
-Router::get("/admin/course/edit/{courseId}", "Admin\CourseController@edit")->name('admin.editCourse');
-Router::patch("/admin/course/edit/{courseId}", "Admin\CourseController@updateCourse")->name('admin.updateCourse');
+Router::get("/admin/course/{courseId}/edit", "Admin\CourseController@edit")->name('admin.editCourse');
+Router::patch("/admin/course/{courseId}/edit", "Admin\CourseController@updateCourse")->name('admin.updateCourse');
 
 /* Users */
 Router::get("/admin/user", "Admin\UserController@index")->name('admin.user');

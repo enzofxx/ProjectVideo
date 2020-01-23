@@ -9,6 +9,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CourseController extends Controller
 {
+    public function show($id)
+    {
+        $courseLectures = Lectures::select('lectures.*')->where('lectures.courseId', '=', $id)->getAll();
+        if(!empty($courseLectures)) {
+            return view('admin/showCourse', ['lectures' => $courseLectures, 'courseId'=>$id]);
+        }
+        else
+            return view("errors/error404");
+    }
+
     public function addCourse()
     {
         $lectures = Lectures::select('lectures.*')->limit(5)->getAll();
