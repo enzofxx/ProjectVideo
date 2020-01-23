@@ -1,5 +1,11 @@
 {% extends "templateAdmin.php.twig" %}
 
 {% block content %}
-    it is admin course ID{{ course.id }}
+    it is admin course ID{{ courseId }}
+    <a href="{{ route('admin.editCourse', {'courseId':courseId}) }}" class="font-weight-bold text-secondary text-decoration-none">
+        <p class="pt-2">
+            <i class="fas fa-edit h3 px-3"></i>
+            Redaguoti kursą
+        </p>
+    </a>
 {% endblock %}

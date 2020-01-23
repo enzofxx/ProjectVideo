@@ -3,13 +3,21 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
-use App\Core\Config;
 use App\Courses;
 use App\Lectures;
 use Symfony\Component\HttpFoundation\Request;
 
 class CourseController extends Controller
 {
+    public function show($id)
+    {
+        $courseLectures = Lectures::select('lectures.*')->where('lectures.courseId', '=', $id)->getAll();
+        if(!empty($courseLectures)) {
+            return view('admin/showCourse', ['lectures' => $courseLectures, 'courseId'=>$id]);
+        }
+        else
+            return view("errors/error404");
+    }
 
     public function addCourse()
     {
@@ -17,47 +25,65 @@ class CourseController extends Controller
         return view('admin/addCourse', ['lectures' => $lectures]);
     }
 
-    public function show($id)
-    {
-        $courseLectures = Lectures::select('lectures.*')->where('lectures.courseId', '=', $id)->getAll();
-
-
-        if(!empty($courseLectures)) {
-            return view('admin/showCourse', ['lectures' => $courseLectures]);
-        }
-        else
-            return view("errors/error404");
+    public function edit($courseId) {
+        $course = Courses::select('*')->where('id', '=' ,$courseId)->get();
+        return view('admin/editCourse',['course'=> $course]);
     }
-
-    public function edit($id)
-    {
-        return view('admin/editCourse', ['id' => $id]);
-    }
-
-    public function storeCourse(Request $request) {
+    public function updateCourse(Request $request, $id) {
+        $upload = $request->files->get('picture');
         $data = $request->request->all();
-//        $target_dir = "D:\\xampp\\htdocs\\ProjectVideo\\resources\\uploads\\"; /* local */
-        $target_dir = rtrim(($_SERVER['DOCUMENT_ROOT'].config::get('config', 'root')), '/public/').'/resources/uploads/';
-        $target_file = $target_dir.basename($_FILES["picture"]["name"]);
-        move_uploaded_file($_FILES['picture']['tmp_name'], $target_file);
 
-        if(!isset($data['name']) || !isset($data['about'])  || !isset($data['price']) || !isset($_FILES)) {
+        if (!isset($data['name']) || !isset($data['about']) || !isset($data['price'])) {
+            return view('errors/error404');
+        } else {
+            $query = [
+                "name" => $data['name'],
+                "about" => $data['about'],
+                "price" => $data['price']
+            ];
+            if (isset($upload)) {
+                $query["picture"]= '../resources/uploads/' . $upload->getClientOriginalName();
+            }
+
+            if (strlen($query['name']) <= 0 || strlen($query['about']) <= 0 || strlen($query['price']) <= 0 ) {
+                return view('errors/error404');
+            }
+            Courses::update($query, $id);
+
+            if (isset($upload)) {
+                $target_dir = dirname(__DIR__, 3) . '/resources/uploads/';
+                $target_file = $target_dir.$upload->getClientOriginalName();
+                move_uploaded_file($upload->getPathName(),$target_file);
+            }
+            return redirect('admin');
+        }
+
+    }
+    public function storeCourse(Request $request)
+    {
+        $upload = $request->files->get('picture');
+        $data = $request->request->all();
+        $target_dir = dirname(__DIR__, 3) . '/resources/uploads/';
+        $target_file = $target_dir.$upload->getClientOriginalName();
+
+        if (!isset($data['name']) || !isset($data['about']) || !isset($data['price']) || !isset($_FILES)) {
             return view('errors/error404');
         } else {
             $query = [
                 "name" => $data['name'],
                 "about" => $data['about'],
                 "price" => $data['price'],
-                "picture" => '../resources/uploads/'.$_FILES["picture"]["name"]
+                "picture" => '../resources/uploads/' . $upload->getClientOriginalName(),
             ];
 
-            if (strlen($query['name']) <= 0 || strlen($query['about']) <= 0 || strlen($query['price']) <= 0 || strlen($_FILES["picture"]["name"]) <= 0) {
+            if (strlen($query['name']) <= 0 || strlen($query['about']) <= 0 || strlen($query['price']) <= 0 ) {
                 return view('errors/error404');
             }
             Courses::insert($query);
-            $lecturesQuery = ["courseId"=>get_object_vars(Courses::select('*')->max('id')->get())['MAX(id)'], "videoUrl"=>'https://www.youtube.com/embed/wjipJEho3EU'];
+            move_uploaded_file($upload->getPathName(),$target_file);
+            $lecturesQuery = ["courseId" => get_object_vars(Courses::select('*')->max('id')->get())['MAX(id)'], "videoUrl" => 'https://www.youtube.com/embed/wjipJEho3EU'];
             Lectures::insert($lecturesQuery);
-            return view('admin/index', ["title" => Config::get('config', 'name')]);
+            return redirect('admin');
         }
     }
 
