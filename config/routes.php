@@ -15,6 +15,7 @@ Router::get("/admin/addvideo", "Admin\CourseController@addvideo")->name('admin.a
 
 /* Users */
 Router::get("/admin/user", "Admin\UserController@index")->name('admin.user');
+Router::get("admin/user/page", "Admin\UserController@userPagination")->name('admin.page');
 
 /* Video Statistics */
 Router::get("/admin/videostats", "Admin\VideoStatsController@index")->name('admin.videostats');
