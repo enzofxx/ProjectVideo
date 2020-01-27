@@ -20,6 +20,7 @@ Router::get("admin/user/page", "Admin\UserController@userPagination")->name('adm
 
 /* Video Statistics */
 Router::get("/admin/videostats", "Admin\VideoStatsController@index")->name('admin.videostats');
+Router::get("admin/videostats/page", "Admin\VideoStatsController@userPagination")->name('admin.page');
 
 /* Income */
 Router::get("/admin/income", "Admin\IncomeController@index")->name('admin.income');

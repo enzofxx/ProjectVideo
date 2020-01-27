@@ -18,7 +18,37 @@
                     </div>
                 </div>
             {% endfor %}
-
+            <div class="d-flex justify-content-center align-items-center">
+                <nav aria-label="Page navigation example" class="text-center">
+                    <ul class="pagination m-0">
+                        <li class="page-item{{ (page <= 1) ? ' disabled' }}"><a class="page-link" href="{{ route('admin.page', {'page' : (page <= 1 ? 1 : page - 1)}) }}">Previous</a>
+                        </li>
+                        {% for i in range((page - 1 <= 1 ? 1 : page - 1), (page + 1 >= pageCount ? pageCount : page + 1)) %}
+                            {% if i > 0 %}
+                                <li class="page-item"><a class="page-link"
+                                                         href="{{ route('admin.page', {'page' : i}) }}">{{ i }}</a>
+                                </li>
+                            {% endif %}
+                            {% if i == 0 %}
+                                <li class="page-item"><a class="page-link"
+                                                         href="{{ route('admin.page', {'page' : 2}) }}">{{ 2 }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page < pageCount - 1 and page > 0 %}
+                            <li class="page-item"><a class="page-link"
+                                                     href="{{ route('admin.page', {'page' : pageCount}) }}">{{ pageCount }}</a>
+                            </li>
+                        {% endif %}
+                        <li class="page-item{{ (page >= pageCount) ? ' disabled' }}"><a class="page-link"
+                                                                                        href="{{ route('admin.page', {'page' : (page >= pageCount ? pageCount : page + 1)}) }}">Next</a>
+                        </li>
+                    </ul>
+                    <div class="my-2">
+                        Page {{ page }} - {{ pageCount }}
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
 
