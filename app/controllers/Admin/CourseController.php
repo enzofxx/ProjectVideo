@@ -81,7 +81,6 @@ class CourseController extends Controller
             if (strlen($query['name']) <= 0 || strlen($query['about']) <= 0 || strlen($query['price']) <= 0 ) {
                 return view('errors/error404');
             }
-            die('valio');
             Courses::insert($query);
             move_uploaded_file($upload->getPathName(),$target_file);
             $lecturesQuery = ["courseId" => get_object_vars(Courses::select('*')->max('id')->get())['MAX(id)'], "videoUrl" => 'https://www.youtube.com/embed/wjipJEho3EU'];
