@@ -1,5 +1,74 @@
 {% extends "templateAdmin.php.twig" %}
 
 {% block content %}
-    Edit course page {{ id }}
+
+    <form class="col-md-6 d-flex bg-light border border-dark needs-validation" method="post"
+          action="{{ route('admin.updateCourse', {'courseId':course.id}) }}" enctype="multipart/form-data" novalidate>
+        {{ method('PATCH') }}
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="courseName">Kurso pavadinimas:</label>
+                    <input type="text" class="form-control" id="courseName" aria-describedby="emailHelp" name="name"
+                           value="{{ course.name }}" required>
+                    <div class="invalid-feedback">
+                        Prašome įvesti kurso pavadinimą.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="aboutCourse">Aprašymas:</label>
+                    <input type="text" class="form-control" id="aboutCourse" name="about" value="{{ course.about }}"
+                           required>
+                    <div class="invalid-feedback">
+                        Prašome įvesti kurso aprašymą.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="coursePicture">Cover paveiksliukas:</label>
+                    <input type="file" class="form-control-file r" id="coursePicture" name="picture" style="display:none" accept="image/*">
+                    <div class="invalid-feedback">
+                        Prašome pasirinkti kurso paveiksliuką.
+                    </div>
+                    <div id="picErr">
+                        Pasirinktas neteisingas failo formatas
+                    </div>
+                </div>
+                <img id="pic" src="{{ route('home') }}{{ course.picture }}" alt="course nr.{{ course.id }}" class="border">
+                <button type="button" class="btn btn-primary" id="OpenImgUpload">Pakeisti nuotrauka</button>
+                <div class="row">
+                    <div class="col">
+                        <label for="coursePrice">Kaina:</label>
+                        <input type="number" class="form-control" placeholder="" name="price" value="{{ course.price }}"
+                               required>
+                        <div class="invalid-feedback">
+                            Prašome įvesti kurso kainą.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="dicountPrice">Kaina su nuolaida</label>
+                        <input type="number" class="form-control" placeholder="" name="dicountPrice" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="validTo">Nuolaida galioja iki:</label>
+                        <input type="date" class="form-control" placeholder="" name="validTo" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" value="published" name="status" disabled>
+                        <label class="form-check-label" for="gridCheck">
+                            Rodyti pagrindiniame puslapyje
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Išsaugoti</button>
+                </div>
+            </div>
+            <div class="col-4 bg-gradient-light">
+                Cia YouTube playlist`ai
+            </div>
+        </div>
+    </form>
 {% endblock %}
+
