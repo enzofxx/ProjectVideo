@@ -14,6 +14,9 @@ class App {
     {
         include 'Support\Helpers\helpers.php';
 
+        // Initialise service container builder
+        new Service();
+
         // Initialising router
         $router = new Router();
 
