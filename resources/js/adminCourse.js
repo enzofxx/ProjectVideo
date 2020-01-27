@@ -51,8 +51,6 @@ if ( file = document.getElementById('coursePicture'))
                 break;
             default:
                 // alert('Not allowed');
-                file.setAttribute("required", "");
-                file.style.display = "block";
                 document.getElementById('picErr').style.display = "block";
                 this.value = '';
         }

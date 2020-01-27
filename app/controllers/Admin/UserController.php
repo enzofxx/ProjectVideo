@@ -21,6 +21,10 @@ class UserController
         if ($page >= 0) {
             $users = Users::select('users.*')->groupBy('lastLogin, visitCount')->pagination($perPage, $page);
         }
+        else{
+            return view('errors/error404');
+        }
+
         $users = $users->getAll();
 
         $userCount = Users::select('COUNT(users.id) AS count');
