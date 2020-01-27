@@ -11,6 +11,7 @@ package-lock.json
 /* App */
 config/database.php
 config/config.php
+config/paysera.php
 public/css
 public/js
 resources/uploads/*

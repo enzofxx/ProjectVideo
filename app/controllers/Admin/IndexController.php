@@ -2,6 +2,7 @@
 namespace App\Controllers\Admin;
 
 use App\Core\Config;
+use App\Core\Service;
 use App\Courses;
 
 class IndexController
