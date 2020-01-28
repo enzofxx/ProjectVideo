@@ -108,7 +108,7 @@ header a:hover{
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1;
 }
 
 #newsletter h1{
@@ -125,6 +125,7 @@ header a:hover{
   padding: 4px;
   height: 25px;
   width: 250px;
+  border-radius: 5px;
 }
 
 #subscribeSubmitButton{
@@ -133,6 +134,7 @@ header a:hover{
   border: none;
   padding: 0 20px 0 20px;
   color: $text-color;
+  border-radius: 5px;
   -webkit-animation:$animation;
 }
 
@@ -144,11 +146,13 @@ header a:hover{
 
 .courseBoxes{
   display: inline-block;
-  margin:auto;
+  margin: 10px;
   text-align: center;
-  width: 30%;
+  width: 25%;
   padding: 15px;
   min-width: 300px;
+  border-radius: 5px;
+  background-color: $text-color;
 }
 .courseBoxes a{
   text-decoration: none;
@@ -157,9 +161,9 @@ header a:hover{
 
 .courseImg{
   width: 300px;
-  height: 300px;
+  height: 250px;
   transition: 0.75s;
-  object-fit: contain;
+  object-fit: scale-down;
 }
 
 .courseImg:hover {
@@ -179,6 +183,49 @@ footer{
   text-align: center;
 }
 
+/* About us */
+
+aside#about-side-bar{
+  float: right;
+  width: 30%;
+  margin-top: 10px;
+}
+
+article#mainColumnAbout{
+  float: left;
+  width: 65%;
+}
+section#aboutSection{
+  min-height: 500px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Modal Login */
+
+.bg-modal{
+  display: none;
+//  width: 100%;
+//  height: 100%;
+//  background-color: rgba(0, 0, 0, 0.7);
+//  position: absolute;
+//  top: 0;
+//  z-index: 2;
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+}
+//
+//.modal-content{
+//  width: 500px;
+//  height: 300px;
+//  color: $button-color;
+//  background-color: $text-color;
+//  border-radius: 5px;
+//  z-index: 3;
+//}
 
 /* Media Querys */
 @media(max-width: 1100px){

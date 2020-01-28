@@ -2,14 +2,6 @@
 
 {% block content %}
     {% include'public/components/header.php.twig' %}
-    <section id="showcase">
-        <div class="container">
-            <h1>Geriausi Kursai Už Geriausia Kaina</h1>
-            <p>Musu kursai - naujos kartos programa. Tai alternatyva universitetiniam išsilavinimui trunkanti tris mėnesius.
-                Mūsų misija - kuo sparčiau suteikti visas reikalingas žinias pradėti suprasti anglų kalbą.
-            </p>
-        </div>
-    </section>
     <section id="newsletter">
         <div class="container">
             <h1>Užsiregistuok ir laimekite nemokamą kursą</h1>
@@ -19,24 +11,66 @@
             </form>
         </div>
     </section>
-    <section id="coursesSection">
+    <section id="aboutSection">
         <div class="container">
-            <div id="courseWrapper">
-                {% for course in courses %}
-                    <div class="courseBoxes">
-                        <a href="{{ route('course.show', {'course':course.id}) }}">
-                            <img class="courseImg" src="{{ course.picture }}" alt="course nr.{{ course.id }}">
-                            <h3>{{ course.name|length > 30 ? course.name|slice(0, 30) ~ '...' : course.name }}</h3>
-                            <p>{{ course.about|length > 100 ? course.about|slice(0, 100) ~ '...' : course.about }}</p>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
+            <article>
+                <h1 class="pageTitle">Jonas Betrikas</h1>
+                <p>
+                    Jau seniai žinoma, kad vertinant dizainą ir kompoziciją, blaško skaitomas tekstas. Tad Lorem Ipsum
+                    naudojamas tam, kad daugiau ar mažiau normalizuotų raidžių paskirstymą vietoje paprasto dubliavimo:
+                    „Tekstas tekstas tekstas tekstas...“. Daugelis leidybinių sistemų programų, o taip pat ir
+                    Hiperteksto kalbos redaktoriai naudoja Lorem Ipsum kaip demonstracinę numatyto teksto versiją, todel
+                    žodžių „Lorem Ipsum“ internetinė paieška parodo daug tinklalapių kurie yra dar besikuriantys.
+                    Egzistuoja ne mažai įvairių Lorem Ipsum versijų. Kai kurios iš jų buvo sukurtos per klaidą, kitos -
+                    tyčia (pvz. jumoristinės).
+                </p>
+                <div>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
+            </article>
+            <article>
+                <h3>Giedrius Adomenas</h3>
+                <p>
+                    Daug kas galvoja, kad Lorem Ipsum - tai vien tik atsitiktinai surinktas tekstas, bet taip nėra. Jo
+                    šaknis galima rasti klasikiniame Lotynų kalba parašytame kūrinyje, išleistame 45 pr. m. e., t.y.
+                    prieš du tūkstančius metų. Richard McClintock, lotynų kalbos profesorius Hampden-Sydney (JAV)
+                    koledže, išrinko vieną iš neaiškesnių žodžių iš Lorem Ipsum ištraukos - „consectetur“, ir ėmėsi
+                    ieškoti jo klasikinėje lotynų kalbos literatūroje. Tokiu būdu jis rado neabejotiną šio žodžio ir
+                    Lorem Ipsum šaltinį knygos „de Finibus Bonorum et Malorum“ (Apie gėrio ir blogio ribas) 1.10.32 ir
+                    1.10.33 pastraipose. Kūrinio autorius – Ciceronas, parašęs jį 45 pr. m. e. Šis etikos teorijos
+                    traktatas buvo labai populiarus Renesanso laikais. Pirmoji Lorem Ipsum teksto eilutė, „Lorem ipsum
+                    dolor sit amet..“ sukurta remiantis 1.10.32 pastraipa.
+                </p>
+                <div>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star "></span>
+                </div>
+            </article>
+            <article>
+                <h3>Ona Petriene </h3>
+                <p>
+                    Daugelis leidybinių sistemų programų, o taip pat ir
+                    Hiperteksto kalbos redaktoriai naudoja Lorem Ipsum kaip demonstracinę numatyto teksto versiją, todel
+                    žodžių „Lorem Ipsum“ internetinė paieška parodo daug tinklalapių kurie yra dar besikuriantys.
+                    Egzistuoja ne mažai įvairių Lorem Ipsum versijų. Kai kurios iš jų buvo sukurtos per klaidą, kitos -
+                    tyčia (pvz. jumoristinės).
+                </p>
+                <div>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
+            </article>
         </div>
     </section>
-    <footer>
-        <p>
-            CBA Anglų Kalbos Kursai &copy; 2015-{{ "now"|date("Y") }}
-        </p>
-    </footer>
+    {% include'public/components/footer.php.twig' %}
 {% endblock %}
