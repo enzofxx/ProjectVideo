@@ -1,0 +1,26 @@
+<header>
+    <div class="container">
+        <div id="brand">
+            <h1>
+                <span class="highlight">CBA</span> Anglų Kalbos Kursai
+            </h1>
+        </div>
+        <nav>
+            <ul>
+                <li {{ route == 'home' ? 'class="current"' : '' }}>
+                    <a href="{{ route('home') }}">Namai</a>
+                </li>
+                <li {{ route == 'about' ? 'class="current"' : '' }}>
+                    <a href="{{ route('about') }}">Apie Mus</a>
+                </li>
+                <li {{ route == 'feedback' ? 'class="current"' : '' }}>
+                    <a href="{{ route('feedback') }}">Atsiliepimai</a>
+                </li>
+                <li>
+                    <a id="loginModal">Prisijungti</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    {{ include('public/components/modalLogin.php.twig') }}
+</header>
