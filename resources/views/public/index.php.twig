@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/publicStyle.css">
+    <script src="../public/js/public.js" defer></script>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div id="brand">
+            <h1>
+                <span class="highlight">CBA</span> Anglų Kalbos Kursai
+            </h1>
+        </div>
+        <nav>
+            <ul>
+                <li class="current">
+                    <a href="#">Namai</a>
+                </li>
+                <li>
+                    <a href="#">Apie Mus</a>
+                </li>
+                <li>
+                    <a href="#">Atsiliepimai</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<section id="showcase">
+    <div class="container">
+        <h1>Geriausi Kursai Už Geriausia Kaina</h1>
+        <p>Musu kursai - naujos kartos programa. Tai alternatyva universitetiniam išsilavinimui trunkanti 9 mėnesius.
+            Mūsų misija - kuo sparčiau suteikti visas reikalingas žinias pradėti suprasti anglų kalbą.
+        </p>
+    </div>
+</section>
+<section id="newsletter">
+    <div class="container">
+        <h1>Užsiregistuokite musų sistemoje ir laimekite nemokama kursa</h1>
+        <form method="post" action="#"> {#TODO add action and method#}
+            <input type="email" placeholder="El. Pašto Adresas">
+            <button id="subscribeSubmitButton" type="submit">Pirmyn</button>
+        </form>
+    </div>
+</section>
+<section id="coursesSection">
+    <div class="container">
+        {% for course in courses %}
+            <div class="courseBox">
+                <a href="{{ route('course.show', {'course':course.id}) }}">
+                    <img src="{{ course.picture }}" alt="course nr.{{ course.id }}">
+                    <h3>{{ course.name|length > 30 ? course.name|slice(0, 30) ~ '...' : course.name }}</h3>
+                    <p>{{ course.about|length > 100 ? course.about|slice(0, 100) ~ '...' : course.about }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<footer>
+    <p>
+        CBA Anglų Kalbos Kursai &copy; 2015-{{ "now"|date("Y") }}
+    </p>
+</footer>
+</body>
+</html>

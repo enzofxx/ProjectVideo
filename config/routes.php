@@ -27,7 +27,7 @@ Router::get("/admin/income", "Admin\IncomeController@index")->name('admin.income
 
 /*---- FrontOffice ----*/
 /* Index */
-Router::get("", "CourseController@index")->name('home');
+Router::get("", "Publics\PublicsController@index")->name('home');
 Router::get("/course/{course}", "CourseController@show")->name('course.show');
 
 
@@ -36,7 +36,7 @@ Router::get("/course/{course}", "CourseController@show")->name('course.show');
 
 /* Topic  */
 
-//Router::get("/topic", "IndexController@index")->name('topic.index');
+//Router::get("/topic", "PublicController@index")->name('topic.index');
 //Router::get("/topic/create", "TopicController@create")->name('topic.create');
 //Router::get("/topic/search", "TopicController@search")->name('topic.search');
 //Router::get("/topic/{topic}", "TopicController@show")->name('topic.show');

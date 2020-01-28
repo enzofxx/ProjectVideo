@@ -1,3 +1,3 @@
 import '../css/publicStyle.scss';
 
-alert('Hello');
+import 'jquery/dist/jquery.slim.min.js';
