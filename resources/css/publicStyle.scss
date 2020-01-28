@@ -1,3 +1,21 @@
+/* Variables */
+$header-Color: #35424a;
+$text-color: #ffffff;
+$button-color: #e8491d;
+$animation: colorchange 1s infinite alternate;
+
+@-webkit-keyframes colorchange {
+  50% {
+    color: white;
+  }
+
+  100% {
+    color: red;
+  }
+}
+
+/* End Of Variables */
+
 body{
   font: 15px/1.5 Arial, Halvetic, sens-serif;
   padding: 0;
@@ -12,15 +30,15 @@ body{
 }
 
 header{
-  background-color: #35424a;
-  color: #ffffff;
-  padding-top: 30px;
+  background-color: $header-Color;
+  color: $text-color;
+  padding-top: 10px;
   min-height: 70px;
-  border-bottom: #e8491d 3px solid;
+  border-bottom: $button-color 3px solid;
 }
 
 header a{
-  color: #ffffff;
+  color: $text-color;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 16px;
@@ -34,7 +52,7 @@ ul{
 header li{
   float:left;
   display: inline;
-  padding: 0 20px 0 20px;
+  padding: 0 10px 0 20px;
 }
 
 header #brand{
@@ -42,7 +60,7 @@ header #brand{
 }
 
 header #brand h1{
-  margin: 0;
+  margin: 10px;
 }
 
 header nav{
@@ -51,7 +69,7 @@ header nav{
 }
 
 header .highlight, header .current a{
-  color: #e8491d;
+  color: $button-color;
   font-weight: bold;
 }
 
@@ -63,6 +81,151 @@ header a:hover{
 #showcase{
   min-height: 400px;
   background-image: url(../img/showcase.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 0 -200px;
+  text-align: center;
+  color: $text-color;
 }
 
+#showcase h1{
+  margin: 100px 0 10px 0;
+  font-size: 50px;
+}
+
+#showcase p{
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+/* NewsLetter */
+
+#newsletter{
+  padding: 5px;
+  color: $text-color;
+  background-color: $header-Color;
+  -webkit-animation:$animation;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#newsletter h1{
+  margin: 5px;
+  float:left;
+}
+
+#newsletter form{
+  float: right;
+  margin-top: 5PX;
+}
+
+#newsletter input[type='email']{
+  padding: 4px;
+  height: 25px;
+  width: 250px;
+}
+
+#subscribeSubmitButton{
+  height: 38px;
+  background: $button-color;
+  border: none;
+  padding: 0 20px 0 20px;
+  color: $text-color;
+  -webkit-animation:$animation;
+}
+
+/* courses */
+
+#coursesSection{
+  margin-top: 30px;
+}
+
+.courseBoxes{
+  display: inline-block;
+  margin:auto;
+  text-align: center;
+  width: 30%;
+  padding: 15px;
+  min-width: 300px;
+}
+.courseBoxes a{
+  text-decoration: none;
+  color: $header-Color;
+}
+
+.courseImg{
+  width: 300px;
+  height: 300px;
+  transition: 0.75s;
+  object-fit: contain;
+}
+
+.courseImg:hover {
+  transform: scale(1.2);
+}
+
+
+#courseWrapper{
+  text-align: center;
+}
+
+footer{
+  padding: 20px;
+  margin-top: 20px;
+  color: $text-color;
+  background-color: $button-color;
+  text-align: center;
+}
+
+
+/* Media Querys */
+@media(max-width: 1100px){
+  header #brand,
+  header nav,
+  header nav li,
+  #newsletter,
+  #newsletter h1,
+  #newsletter form
+  {
+    float:none;
+    text-align: center;
+    width: 100%;
+  }
+
+  .container{
+    width: 90%;
+  }
+}
+
+@media(max-width: 768px){
+  header #brand,
+  header nav,
+  header nav li,
+  #newsletter,
+  #newsletter h1,
+  #newsletter form
+  {
+    float:none;
+    text-align: center;
+    width: 100%;
+  }
+
+  header{
+    padding: 20px;
+  }
+
+  header nav {
+    padding: 10px;
+  }
+
+  #showcase h1{
+    margin-top: 20px;
+  }
+
+  .container{
+    width: 90%;
+  }
+}
 
