@@ -40,6 +40,7 @@ Router::get("/feedback", "Publics\PublicsController@feedback")->name('feedback')
 
 /* Courses */
 Router::get("/course/{course}", "CourseController@show")->name('course.show');
+Router::get("/course", "CourseController@index")->name('course.index');
 
 
 

@@ -26,6 +26,8 @@ class PublicsController extends Controller
 
                 if($user->role == 'admin'){
                     return redirect()->route('admin.index');
+                } else {
+                    return redirect()->route('course.index');
                 }
             }
         }
