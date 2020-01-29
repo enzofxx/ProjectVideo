@@ -38,6 +38,10 @@ Router::get("/feedback", "Publics\PublicsController@feedback")->name('feedback')
 /* Courses */
 Router::get("/course/{course}", "CourseController@show")->name('course.show');
 
+/* Google oAuth API */
+Router::get("/google-callback", "Oauth\GoogleController@loginForm")->name('course.gg');
+Router::get("nesvarbu", "Oauth\GoogleController@logout")->name('google.logout');
+
 
 
 /* EXAMPLES */

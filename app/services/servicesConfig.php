@@ -20,4 +20,6 @@ return function (ContainerConfigurator $configurator) {
 
     $services->set('paysera', 'App\Services\Paysera');
 
+    $services->set('googleAPI', 'App\Services\GoogleAPI');
+
 };

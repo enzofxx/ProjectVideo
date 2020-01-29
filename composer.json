@@ -23,6 +23,7 @@
         "symfony/config": "^5.0",
         "league/oauth2-client": "^2.4",
         "league/oauth2-google": "^3.0",
-        "drewm/mailchimp-api": "^2.5"
+        "drewm/mailchimp-api": "^2.5",
+        "google/apiclient": "^2.0",
     }
 }

@@ -2,6 +2,7 @@
 namespace App\Controllers\Publics;
 
 use App\Controllers\Controller;
+use App\Core\Service;
 use App\Courses;
 
 class PublicsController extends Controller
@@ -13,6 +14,7 @@ class PublicsController extends Controller
         return view('public/index', [
             'courses' => $courses,
             'route' => $route,
+            'loginUrl' => Service::get('googleAPI')->getLoginUrl()
             ]);
     }
 
@@ -21,6 +23,7 @@ class PublicsController extends Controller
         $route = 'about';
         return view('public/aboutUs', [
             'route' => $route,
+            'loginUrl' => Service::get('googleAPI')->getLoginUrl()
         ]);
     }
 
@@ -29,6 +32,7 @@ class PublicsController extends Controller
         $route = 'feedback';
         return view('public/feedback', [
             'route' => $route,
+            'loginUrl' => Service::get('googleAPI')->getLoginUrl()
         ]);
     }
 }
