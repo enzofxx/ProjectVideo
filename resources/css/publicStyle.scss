@@ -204,28 +204,104 @@ section#aboutSection{
 }
 
 /* Modal Login */
-
-.bg-modal{
-  display: none;
-//  width: 100%;
-//  height: 100%;
-//  background-color: rgba(0, 0, 0, 0.7);
-//  position: absolute;
-//  top: 0;
-//  z-index: 2;
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
+/* Outer */
+.popup {
+  width:100%;
+  height:100%;
+  display:none;
+  position:fixed;
+  top:0px;
+  left:0px;
+  background:rgba(0,0,0,0.75);
+  z-index: 2;
 }
-//
-//.modal-content{
-//  width: 500px;
-//  height: 300px;
-//  color: $button-color;
-//  background-color: $text-color;
-//  border-radius: 5px;
-//  z-index: 3;
-//}
+
+/* Modal Login */
+/* Inner */
+.popup-inner {
+  background-color: $text-color;
+  max-width:450px;
+  width:90%;
+  padding:5px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  -webkit-transform:translate(-50%, -50%);
+  transform:translate(-50%, -50%);
+  box-shadow:0px 2px 6px rgba(0,0,0,1);
+  border-radius:3px;
+  //background:#fff;
+}
+
+/* Modal Login */
+/* Close Button */
+.popup-close {
+  width:30px;
+  height:30px;
+  padding-top:4px;
+  display:inline-block;
+  position:absolute;
+  top:0px;
+  right:0px;
+  transition:ease 0.25s all;
+  -webkit-transform:translate(50%, -50%);
+  transform:translate(50%, -50%);
+  border-radius:1000px;
+  background:rgba(0,0,0,0.8);
+  font-family:Arial, Sans-Serif;
+  font-size:20px;
+  text-align:center;
+  line-height:100%;
+  color:#fff;
+}
+/* Modal Login */
+/* Hover */
+.popup-close:hover {
+  -webkit-transform:translate(50%, -50%) rotate(180deg);
+  transform:translate(50%, -50%) rotate(180deg);
+  background:rgba(0,0,0,1);
+  text-decoration:none;
+}
+
+/* Modal Login */
+/* form */
+.popup-form{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.popup-form div input{
+  background-color: $text-color;
+  border: none;
+  font-size: 18px;
+  border-bottom: 3px $button-color solid;
+  color: $button-color;
+  height: 30px;
+  width: 60%;
+  padding-top: 5px;
+  margin: 30px 10px;
+  outline: none;
+}
+
+.popup-form i{
+  color: $button-color;
+  width: 30px;
+  padding: 10px;
+}
+
+#login-popup-button{
+  display: block;
+  color: $button-color;
+  font-size: 16px;
+  margin: 30px auto;
+  padding: 10px;
+  padding: 10px;
+  width: 80%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+
 
 /* Media Querys */
 @media(max-width: 1100px){
