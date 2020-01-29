@@ -6,8 +6,8 @@ return [
     'sign_password' => '',
     'currency' => 'EUR',
     'country' => 'LT',
-    'payseraAcceptUrl' => '',
-    'payseraCancelUrl' => '',
-    'payseraCallBackUrlUrl' => '',
+    'accepturl' => '',
+    'cancelurl' => '',
+    'callbackurl' => '',
     'test' => 1
 ];

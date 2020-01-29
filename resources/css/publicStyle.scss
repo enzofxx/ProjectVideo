@@ -1,0 +1,354 @@
+/* Variables */
+$header-Color: #35424a;
+$text-color: #ffffff;
+$button-color: #e8491d;
+$animation: colorchange 1s infinite alternate;
+
+@-webkit-keyframes colorchange {
+  50% {
+    color: white;
+  }
+
+  100% {
+    color: red;
+  }
+}
+
+/* End Of Variables */
+
+body{
+  font: 15px/1.5 Arial, Halvetic, sens-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.container{
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+header{
+  background-color: $header-Color;
+  color: $text-color;
+  padding-top: 10px;
+  min-height: 70px;
+  border-bottom: $button-color 3px solid;
+}
+
+header a{
+  color: $text-color;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+header li{
+  float:left;
+  display: inline;
+  padding: 0 10px 0 20px;
+}
+
+header #brand{
+  float: left;
+}
+
+header #brand h1{
+  margin: 10px;
+}
+
+header nav{
+  float: right;
+  margin-top: 10px;
+}
+
+header .highlight, header .current a{
+  color: $button-color;
+  font-weight: bold;
+}
+
+header a:hover{
+  color: #cccccc;
+  font-weight: bold;
+}
+
+#showcase{
+  min-height: 400px;
+  background-image: url(../img/showcase.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 0 -200px;
+  text-align: center;
+  color: $text-color;
+}
+
+#showcase h1{
+  margin: 100px 0 10px 0;
+  font-size: 50px;
+}
+
+#showcase p{
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+/* NewsLetter */
+
+#newsletter{
+  padding: 5px;
+  color: $text-color;
+  background-color: $header-Color;
+  -webkit-animation:$animation;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+#newsletter h1{
+  margin: 5px;
+  float:left;
+}
+
+#newsletter form{
+  float: right;
+  margin-top: 5PX;
+}
+
+#newsletter input[type='email']{
+  padding: 4px;
+  height: 25px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+#subscribeSubmitButton{
+  height: 38px;
+  background: $button-color;
+  border: none;
+  padding: 0 20px 0 20px;
+  color: $text-color;
+  border-radius: 5px;
+  -webkit-animation:$animation;
+}
+
+/* courses */
+
+#coursesSection{
+  margin-top: 30px;
+}
+
+.courseBoxes{
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+  width: 25%;
+  padding: 15px;
+  min-width: 300px;
+  border-radius: 5px;
+  background-color: $text-color;
+}
+.courseBoxes a{
+  text-decoration: none;
+  color: $header-Color;
+}
+
+.courseImg{
+  width: 300px;
+  height: 250px;
+  transition: 0.75s;
+  object-fit: scale-down;
+}
+
+.courseImg:hover {
+  transform: scale(1.2);
+}
+
+
+#courseWrapper{
+  text-align: center;
+}
+
+footer{
+  padding: 20px;
+  margin-top: 20px;
+  color: $text-color;
+  background-color: $button-color;
+  text-align: center;
+}
+
+/* About us */
+
+aside#about-side-bar{
+  float: right;
+  width: 30%;
+  margin-top: 10px;
+}
+
+article#mainColumnAbout{
+  float: left;
+  width: 65%;
+}
+section#aboutSection{
+  min-height: 500px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Modal Login */
+/* Outer */
+.popup {
+  width:100%;
+  height:100%;
+  display:none;
+  position:fixed;
+  top:0px;
+  left:0px;
+  background:rgba(0,0,0,0.75);
+  z-index: 2;
+}
+
+/* Modal Login */
+/* Inner */
+.popup-inner {
+  background-color: $text-color;
+  max-width:450px;
+  width:90%;
+  padding:5px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  -webkit-transform:translate(-50%, -50%);
+  transform:translate(-50%, -50%);
+  box-shadow:0px 2px 6px rgba(0,0,0,1);
+  border-radius:3px;
+  //background:#fff;
+}
+
+/* Modal Login */
+/* Close Button */
+.popup-close {
+  width:30px;
+  height:30px;
+  padding-top:4px;
+  display:inline-block;
+  position:absolute;
+  top:0px;
+  right:0px;
+  transition:ease 0.25s all;
+  -webkit-transform:translate(50%, -50%);
+  transform:translate(50%, -50%);
+  border-radius:1000px;
+  background:rgba(0,0,0,0.8);
+  font-family:Arial, Sans-Serif;
+  font-size:20px;
+  text-align:center;
+  line-height:100%;
+  color:#fff;
+}
+/* Modal Login */
+/* Hover */
+.popup-close:hover {
+  -webkit-transform:translate(50%, -50%) rotate(180deg);
+  transform:translate(50%, -50%) rotate(180deg);
+  background:rgba(0,0,0,1);
+  text-decoration:none;
+}
+
+/* Modal Login */
+/* form */
+.popup-form{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.popup-form div input{
+  background-color: $text-color;
+  border: none;
+  font-size: 18px;
+  border-bottom: 3px $button-color solid;
+  color: $button-color;
+  height: 30px;
+  width: 60%;
+  padding-top: 5px;
+  margin: 30px 10px;
+  outline: none;
+}
+
+.popup-form i{
+  color: $button-color;
+  width: 30px;
+  padding: 10px;
+}
+
+#login-popup-button{
+  display: block;
+  color: $button-color;
+  font-size: 16px;
+  margin: 30px auto;
+  padding: 10px;
+  padding: 10px;
+  width: 80%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+
+
+/* Media Querys */
+@media(max-width: 1100px){
+  header #brand,
+  header nav,
+  header nav li,
+  #newsletter,
+  #newsletter h1,
+  #newsletter form
+  {
+    float:none;
+    text-align: center;
+    width: 100%;
+  }
+
+  .container{
+    width: 90%;
+  }
+}
+
+@media(max-width: 768px){
+  header #brand,
+  header nav,
+  header nav li,
+  #newsletter,
+  #newsletter h1,
+  #newsletter form
+  {
+    float:none;
+    text-align: center;
+    width: 100%;
+  }
+
+  header{
+    padding: 20px;
+  }
+
+  header nav {
+    padding: 10px;
+  }
+
+  #showcase h1{
+    margin-top: 20px;
+  }
+
+  .container{
+    width: 90%;
+  }
+}
+

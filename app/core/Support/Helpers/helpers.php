@@ -61,7 +61,7 @@ function checkForUploadErrors($image)
         $errors[] = 'Only JPEG, PNG and GIFs are allowed';
     }
 
-    if (isset($errors)) {
+    if(!empty($errors)) {
         echo "Response from SERVER";
         echo "<br>";
         echo "You hacked front-end but not the server";
