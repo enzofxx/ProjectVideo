@@ -29,6 +29,9 @@ Router::get("/admin/income", "Admin\IncomeController@index")->name('admin.income
 /* Index */
 Router::get("", "CourseController@index")->name('home');
 Router::get("/course/{course}", "CourseController@show")->name('course.show');
+Router::get("/profile/{profile}", "UserController@profile")->name('user.profile');
+Router::get("/profile/{profile}/payments", "UserController@payments")->name('user.payments');
+Router::get("/profile/{profile}/payments/{payment}", "UserController@paymentShow")->name('user.payments.show');
 
 
 

@@ -1,0 +1,63 @@
+{% extends "template.php.twig" %}
+
+{% block content %}
+
+    <!-- Navigation -->
+
+    <div>
+        {{ include('components/topNavbar.html.twig') }}
+    </div>
+
+    <!-- Content -->
+
+    <div class="container-fluid border bg-light p-3">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-sm-2">
+                <div>
+                    {{ include('components/userNavbar.html.twig') }}
+                </div>
+            </div>
+            <!-- Main -->
+            <div class="col-sm-9 shadow pb-2">
+                <div>
+                    <h1 class="text-center mb-3 pb-3 border-bottom border-dark">Atlikti mokėjimai</h1>
+                </div>
+                <div class="row mx-auto pt-2 justify-content-center">
+                    <div class="col-sm-7 text-center">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Kurso pavadinimas</th>
+                                <th scope="col">Kaina</th>
+                                <th scope="col">Užsakymo data</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for payment in payments %}
+                                <tr id="{{ payment.id }}">
+                                    <td class="border-right">{{ payment.productId }}</td>
+                                    <td class="border-right">{{ payment.price }} &#8364;</td>
+                                    <td class="border-right">{{ payment.createdOn }}</td>
+                                    <td>
+                                        <a href="{{ route('user.payments.show',{'profile' : user.id, 'payment':payment.id}) }}">pdf</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr> <!-- A gap after the last table's record-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <button class="btn btn-dark" onclick="history.go(-1);"> &#8592; Back</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
