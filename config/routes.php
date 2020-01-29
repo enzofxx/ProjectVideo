@@ -26,6 +26,9 @@ Router::get("admin/videostats/page", "Admin\VideoStatsController@userPagination"
 Router::get("/admin/income", "Admin\IncomeController@index")->name('admin.income');
 
 /*---- FrontOffice ----*/
+/* Login */
+Router::post("", "Publics\PublicsController@login")->name('login');
+
 /* Index */
 Router::get("", "Publics\PublicsController@index")->name('home');
 
