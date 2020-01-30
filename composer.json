@@ -25,6 +25,6 @@
         "league/oauth2-google": "^3.0",
         "drewm/mailchimp-api": "^2.5",
         "mpdf/mpdf": "^8.0",
-        "google/apiclient": "^2.0",
+        "google/apiclient": "^2.0"
     }
 }

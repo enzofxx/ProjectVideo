@@ -20,7 +20,9 @@ class PublicsController extends Controller
                 ->where("email", '=', "'" . $enteredEmail . "'")
                 ->get();
 
-            if($enteredPassword == $user->password){
+            $password = $user->password ?? '';
+
+            if($enteredPassword == $password){
                 Service::get('session')->set('role', $user->role);
 
                 if($user->role == 'admin'){
