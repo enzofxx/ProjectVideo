@@ -5,6 +5,7 @@ use App\Controllers\Controller;
 use App\Core\Service;
 use App\Courses;
 use App\Users;
+use http\Client\Curl\User;
 
 class PublicsController extends Controller
 {
@@ -23,7 +24,8 @@ class PublicsController extends Controller
             $password = $user->password ?? '';
 
             if($enteredPassword == $password){
-                Service::get('session')->set('role', $user->role);
+                $user = Users::select('*')->where('email', '=', "'" . $enteredEmail . "'")->get();
+                Service::get('session')->set('user', $user);
 
                 if($user->role == 'admin'){
                     return redirect()->route('admin.index');
