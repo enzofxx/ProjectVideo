@@ -31,4 +31,9 @@
         </nav>
     </div>
     {{ include('public/components/modalLogin.php.twig') }}
+    <div class="error">
+    {% if error == true %}
+        <span>{{ error }}</span>
+    {% endif %}
+    </div>
 </header>

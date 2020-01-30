@@ -1,6 +1,7 @@
 <div class="popup" data-popup="popup-1">
     <div class="popup-inner">
-        <form class="popup-form" method="post">
+        <form class="popup-form" method="post" action="{{ route('login') }}">
+            {{ method('POST') }}
             <div id="login-popup-email">
                 <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
                 <input type="email" name="email" placeholder="El. Paštas">

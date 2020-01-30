@@ -44,6 +44,17 @@ header a{
   font-size: 16px;
 }
 
+.error{
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  text-align: right;
+  background-color: red;
+}
+.error span{
+  padding-right: 40px;
+}
+
 ul{
   margin: 0;
   padding: 0;
