@@ -149,6 +149,12 @@ class Route {
         return $this;
     }
 
+    public function middleware(string $name) :self
+    {
+        var_dump($name);
+        die();
+    }
+
     /**
      * @param array $parameters
      */

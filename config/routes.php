@@ -51,7 +51,6 @@ Router::get("/google-callback", "Oauth\GoogleController@loginForm")->name('cours
 Router::get("nesvarbu", "Oauth\GoogleController@logout")->name('google.logout');
 
 
-
 /* EXAMPLES */
 
 /* API */
