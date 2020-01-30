@@ -32,9 +32,8 @@ Router::post("", "Publics\PublicsController@login")->name('login');
 /* Index */
 Router::get("", "Publics\PublicsController@index")->name('home');
 Router::get("/course/{course}", "CourseController@show")->name('course.show');
-Router::get("/profile/{profile}", "UserController@profile")->name('user.profile');
-Router::get("/profile/{profile}/payments", "UserController@payments")->name('user.payments');
-Router::get("/profile/{profile}/payments/{payment}", "UserController@paymentShow")->name('user.payments.show');
+Router::get("/profile", "UserController@profile")->name('user.profile');
+Router::get("/profile/{payment}", "UserController@paymentShow")->name('user.payments.show');
 
 /* About Us */
 Router::get("/about", "Publics\PublicsController@about")->name('about');
