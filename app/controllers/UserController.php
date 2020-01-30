@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Service;
 use App\Courses;
 use App\Payments;
 use App\Users;
@@ -11,37 +12,41 @@ use Mpdf\Output\Destination;
 
 class UserController extends controller
 {
-    public function profile($id)
+    public function profile()
     {
-        $profile = Users::select('*')->where('id', '=', $id)->get();
-        return view('user/profile', ['profile' => $profile]);
-    }
+        $user = Service::get('session')->get('user');
+        $courses = Courses::select('*')->getAll();
+        $payments = Payments::select('*')->getAll();
 
-    public function payments($id)
-    {
+        array_walk($courses, function ($course) use (&$payments, $user) {
+            array_walk($payments, function ($payment) use (&$course, $user) {
+                if ($payment->userId == $user->id && $payment->productId == $course->id) {
+                    $course->purchased = $payment;
+                }
+            });
+        });
+
         $payments = Payments::select('payments.*, courses.name AS productId')
             ->join('courses', 'courses.id', '=', 'payments.productId')
-            ->where('payments.userId', '=', $id)
+            ->where('payments.userId', '=', $user->id)
             ->getAll();
 
-        $user = Users::select('*')->where('id', '=', $id)->get();
-
-        return view('user/payments', ['user' => $user, 'payments' => $payments]);
+        $profile = Users::select('*')->where('id', '=', $user->id)->get();
+        return view('user/profile', ['profile' => $profile, 'courses' => $courses, 'payments' => $payments]);
     }
 
-    public function paymentShow($payment_id, $profile_id)
+    public function paymentShow($payment_id)
     {
         $date = date("Y-m-d");
-
-        $profile = Users::select('*')->where('id', '=', $profile_id)->get();
+        $user = Service::get('session')->get('user');
 
         $payments = Payments::select('payments.*, courses.name AS productId, courses.about')
             ->join('courses', 'courses.id', '=', 'payments.productId')
-            ->where('payments.userId', '=', $profile_id)
+            ->where('payments.userId', '=', $user->id)
             ->where('payments.id', '=', $payment_id)
             ->get();
 
-        if(empty($payments)) {
+        if (empty($payments)) {
             return view("errors/error404");
         }
 
@@ -99,7 +104,7 @@ class UserController extends controller
             <table width="100%" style="font-family: serif;" cellpadding="10"><tr>
                 <td width="45%" style="border: 0.1mm solid #888888; "><span style="font-size: 7pt; color: #555555; font-family: sans;">Pardavėjas:</span><br /><br />UAB "CBA Anglų Kalbos Kursai"<br />154 Kęstučio g.<br />Vilnius</td>
                 <td width="10%">&nbsp;</td>
-                <td width="45%" style="border: 0.1mm solid #888888;"><span style="font-size: 7pt; color: #555555; font-family: sans;">Pirkėjas:</span><br /><br /> ' . $profile->name . ' ' . $profile->surname . ' <br /> ' . $profile->email . ' </td>
+                <td width="45%" style="border: 0.1mm solid #888888;"><span style="font-size: 7pt; color: #555555; font-family: sans;">Pirkėjas:</span><br /><br /> ' . $user->name . ' ' . $user->surname . ' <br /> ' . $user->email . ' </td>
             </tr></table>
             <br />
             <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">

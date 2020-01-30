@@ -2,45 +2,51 @@
 
 {% block content %}
 
-<!-- Navigation -->
+    <!-- Navigation -->
 
-<div>
-    {{ include('components/topNavbar.html.twig') }}
-</div>
+    <div>
+        {{ include('components/topNavbar.html.twig') }}
+    </div>
 
-<!-- Content -->
+    <!-- Content -->
 
-<div class="container-fluid border bg-light p-3">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-sm-2">
-            <div>
-                {{ include('components/userNavbar.html.twig') }}
+    <div class="container-fluid border bg-light p-3">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-sm-2">
+                <div>
+                    {{ include('components/userNavbar.html.twig') }}
+                </div>
             </div>
-        </div>
-        <!-- Main -->
-        <div class="col-sm-9">
-            <div>
-                <h1 class="text-center mb-3 pb-3 border-bottom border-dark">Visi kursai</h1>
-            </div>
-            <div class="row mx-auto">
-                {% for course in courses %}
-                    <div class="col-md-4 pb-3">
-                        <div class="thumbnail text-center border pt-2 shadow">
-                            <a href="{{ route('course.show',{'course':course.id}) }}">
-                                <img src="{{ course.picture }}"
-                                     alt="course nr.{{ course.id }}" class="border">
-                                <div class="caption text-center pt-3">
-                                    <a href="{{ route('course.show',{'course':course.id}) }}"
-                                       class="btn btn-secondary btn-lg active mt-1 mb-5 shadow"
-                                       role="button" aria-pressed="true">Pirkti</a>
-                                </div>
-                            </a>
+            <!-- Main -->
+            <div class="col-sm-9">
+                <div>
+                    <h1 class="text-center mb-3 pb-3 border-bottom border-dark">Visi kursai</h1>
+                </div>
+                <div class="row mx-auto">
+                    {% for course in courses %}
+                        <div class="col-md-4 pb-3">
+                            <div class="thumbnail text-center border pt-2 shadow">
+                                <a href="{{ route('course.show',{'course':course.id}) }}">
+                                    <img src="{{ course.picture }}"
+                                         alt="course nr.{{ course.id }}" class="border">
+                                    <div class="caption text-center pt-3">
+                                        {% if course.purchased %}
+                                            <a href="{{ route('course.show',{'course':course.id}) }}"
+                                               class="btn btn-secondary btn-lg active mt-1 mb-5 shadow"
+                                               role="button" aria-pressed="true">Žiūrėti</a>
+                                        {% else %}
+                                            <a href=""
+                                               class="btn btn-secondary btn-lg active mt-1 mb-5 shadow"
+                                               role="button" aria-pressed="true">Pirkti</a>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
