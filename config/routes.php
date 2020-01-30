@@ -26,6 +26,9 @@ Router::get("admin/videostats/page", "Admin\VideoStatsController@userPagination"
 Router::get("/admin/income", "Admin\IncomeController@index")->name('admin.income');
 
 /*---- FrontOffice ----*/
+/* Login */
+Router::post("", "Publics\PublicsController@login")->name('login');
+
 /* Index */
 Router::get("", "Publics\PublicsController@index")->name('home');
 Router::get("/course/{course}", "CourseController@show")->name('course.show');
@@ -41,6 +44,7 @@ Router::get("/feedback", "Publics\PublicsController@feedback")->name('feedback')
 
 /* Courses */
 Router::get("/course/{course}", "CourseController@show")->name('course.show');
+Router::get("/course", "CourseController@index")->name('course.index');
 
 
 
