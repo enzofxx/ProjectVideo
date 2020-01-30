@@ -26,7 +26,6 @@ class PublicsController extends Controller
             if($enteredPassword == $password){
                 $user = Users::select('*')->where('email', '=', "'" . $enteredEmail . "'")->get();
                 Service::get('session')->set('user', $user);
-
                 if($user->role == 'admin'){
                     return redirect()->route('admin.index');
                 } else {
@@ -72,5 +71,11 @@ class PublicsController extends Controller
             'route' => $route,
             'loginUrl' => Service::get('googleAPI')->getLoginUrl()
         ]);
+    }
+
+    public function logout()
+    {
+        Service::get('session')->invalidate();
+        return redirect()->route('home');
     }
 }

@@ -1,61 +1,66 @@
 <?php
 
 use App\Core\Router;
+use App\Core\Service;
 
-/*---- BackOffice ----*/
-/* Index */
-Router::get("/admin", "Admin\IndexController@index")->name('admin.index');
+$userRole = Service::get('session')->get('user')->role ?? null;
 
-/* Course */
-Router::get("/admin/course/add", "Admin\CourseController@addCourse")->name('admin.addCourse');
-Router::put("/admin/course/add", "Admin\CourseController@storeCourse")->name('admin.storeCourse');
-Router::get("/admin/course/{courseId}", "Admin\CourseController@show")->name('admin.showCourse');
-Router::get("/admin/course/{courseId}/edit", "Admin\CourseController@edit")->name('admin.editCourse');
-Router::patch("/admin/course/{courseId}/edit", "Admin\CourseController@updateCourse")->name('admin.updateCourse');
-Router::get("/admin/addvideo", "Admin\CourseController@addvideo")->name('admin.addVideo');
+/////////////////////////////////// ADMIN SITE ROUTES /////////////////////////////////
+if($userRole == 'admin')
+{
+    /*---- BackOffice ----*/
+    /* Index */
+    Router::get("/admin", "Admin\IndexController@index")->name('admin.index');
 
-/* Users */
-Router::get("/admin/user", "Admin\UserController@index")->name('admin.user');
-Router::get("admin/user/page", "Admin\UserController@userPagination")->name('admin.user.page');
+    /* Course */
+    Router::get("/admin/course/add", "Admin\CourseController@addCourse")->name('admin.addCourse');
+    Router::put("/admin/course/add", "Admin\CourseController@storeCourse")->name('admin.storeCourse');
+    Router::get("/admin/course/{courseId}", "Admin\CourseController@show")->name('admin.showCourse');
+    Router::get("/admin/course/{courseId}/edit", "Admin\CourseController@edit")->name('admin.editCourse');
+    Router::patch("/admin/course/{courseId}/edit", "Admin\CourseController@updateCourse")->name('admin.updateCourse');
+    Router::get("/admin/addvideo", "Admin\CourseController@addvideo")->name('admin.addVideo');
 
-/* Video Statistics */
-Router::get("/admin/videostats", "Admin\VideoStatsController@index")->name('admin.videostats');
-Router::get("admin/videostats/page", "Admin\VideoStatsController@userPagination")->name('admin.videostats.page');
+    /* Users */
+    Router::get("/admin/user", "Admin\UserController@index")->name('admin.user');
+    Router::get("admin/user/page", "Admin\UserController@userPagination")->name('admin.user.page');
 
-/* Income */
-Router::get("/admin/income", "Admin\IncomeController@index")->name('admin.income');
+    /* Video Statistics */
+    Router::get("/admin/videostats", "Admin\VideoStatsController@index")->name('admin.videostats');
+    Router::get("/admin/videostats/page", "Admin\VideoStatsController@userPagination")->name('admin.videostats.page');
 
-/*---- FrontOffice ----*/
-/* Login */
-Router::post("", "Publics\PublicsController@login")->name('login');
+    /* Income */
+    Router::get("/admin/income", "Admin\IncomeController@index")->name('admin.income');
 
-/* Index */
-Router::get("", "Publics\PublicsController@index")->name('home');
-Router::get("/course/{course}", "CourseController@show")->name('course.show');
-Router::get("/profile/{profile}", "UserController@profile")->name('user.profile');
-Router::get("/profile/{profile}/payments", "UserController@payments")->name('user.payments');
-Router::get("/profile/{profile}/payments/{payment}", "UserController@paymentShow")->name('user.payments.show');
+}
+//////////////////////////// USER SITE ROUTES //////////////////////////////////
+if($userRole == 'admin' || $userRole == 'user')
+{
+    /*---- FrontOffice ----*/
+    Router::get("/profile/{profile}", "UserController@profile")->name('user.profile');
+    Router::get("/profile/{profile}/payments", "UserController@payments")->name('user.payments');
+    Router::get("/profile/{profile}/payments/{payment}", "UserController@paymentShow")->name('user.payments.show');
 
-/* About Us */
-Router::get("/about", "Publics\PublicsController@about")->name('about');
+    /* About Us */
+    Router::get("/about", "Publics\PublicsController@about")->name('about');
 
-/* Feedback */
-Router::get("/feedback", "Publics\PublicsController@feedback")->name('feedback');
+    /* Feedback */
+    Router::get("/feedback", "Publics\PublicsController@feedback")->name('feedback');
 
-/* Courses */
-Router::get("/course/{course}", "CourseController@show")->name('course.show');
-Router::get("/course", "CourseController@index")->name('course.index');
-
+    /* Courses */
+    Router::get("/course/{course}", "CourseController@show")->name('course.show');
+    Router::get("/course", "CourseController@index")->name('course.index');
+}
+///////////////////////////// PUBLIC ROUTES /////////////////////////////////////
 /* Google oAuth API */
 Router::get("/google-callback", "Oauth\GoogleController@loginForm")->name('course.gg');
 Router::get("nesvarbu", "Oauth\GoogleController@logout")->name('google.logout');
 
+/* Login */
+Router::post("", "Publics\PublicsController@login")->name('login');
+/* Logout */
+Router::get("/logout", "Publics\PublicsController@logout")->name('logout');
 
-/* EXAMPLES */
+/* Index */
+Router::get("", "Publics\PublicsController@index")->name('home');
 
-/* API */
 
-/* DocTags */
-//Router::get('/api/doctags', 'DocTagsController@doctags')->name('api.doctags.doctags'); Example route for DocTags axios ajax
-
-/* End of EXAMPLES */

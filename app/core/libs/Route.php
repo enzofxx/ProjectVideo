@@ -10,6 +10,7 @@ class Route {
     private $controller;
     private $function;
     private $parameters;
+    private $middleware;
 
     /**
      * Route constructor.
@@ -19,7 +20,7 @@ class Route {
      * @param string $function
      * @param array $params
      */
-    public function __construct(string $method, string $url, string $controller, string $function, array $params = [], string $name = null)
+    public function __construct(string $method, string $url, string $controller, string $function, array $params = [], string $name = null, string $middleware = null)
     {
         $this->method = $method;
         $this->url = $url;
@@ -27,6 +28,7 @@ class Route {
         $this->function = $function;
         $this->parameters = $params;
         $this->name = $name;
+        $this->middleware = $middleware;
     }
 
     /**
@@ -139,6 +141,15 @@ class Route {
         }, $this->parameters);
     }
 
+    public function getMiddleware(){
+        return $this->middleware;
+    }
+
+    public function middleware($name)
+    {
+        $this->middleware = $name;
+        return $this;
+    }
     /**
      * @param string $name
      * @return $this
@@ -149,10 +160,10 @@ class Route {
         return $this;
     }
 
-    public function middleware(string $name) :self
+    public function setName(string $name) : self
     {
-        var_dump($name);
-        die();
+        $this->name = $name;
+        return $this;
     }
 
     /**

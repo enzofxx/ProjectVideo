@@ -29,12 +29,18 @@ class Router {
         return $this->_url;
     }
 
+
     public function getRoutes() {
         return self::$_ROUTES;
     }
 
     public function getRoute() {
         return $this->_current_route;
+    }
+
+    public function getMiddleware() {
+        $middleware = $this->_current_route;
+        return $middleware->getMiddleware();
     }
 
     public function findRouteByUrl($url) {
