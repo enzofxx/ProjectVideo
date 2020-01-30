@@ -1,0 +1,56 @@
+{% extends "template.php.twig" %}
+
+{% block content %}
+
+    <!-- Navigation -->
+
+    <div>
+        {{ include('components/topNavbar.html.twig') }}
+    </div>
+
+    <!-- Content -->
+
+    <div class="container-fluid border bg-light p-3">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-sm-2">
+                <div>
+                    {{ include('components/userNavbar.html.twig') }}
+                </div>
+            </div>
+            <!-- Main -->
+            <div class="col-sm-9 shadow pb-2">
+                <div>
+                    <h1 class="text-center mb-3 pb-3 border-bottom border-dark">Profilis</h1>
+                </div>
+                <div class="row mx-auto pt-2 justify-content-center">
+                    <div class="col-sm-7 text-center">
+                        <div class="row">
+                            <div class="pt-2 pb-2 col-sm-7 text-right">
+                                <i class="far fa-user fa-10x"></i>
+                            </div>
+                            <div class="col-sm-5 text-center">
+
+                                <a href="{{ route('') }}"
+                                   class="btn btn-success btn-sm active mt-1 mb-5 shadow"
+                                   role="button" aria-pressed="true">Keisti slaptažodį</a>
+                                &nbsp;
+                                <a href="{{ route('user.payments',{'profile':profile.id}) }}"
+                                   class="btn btn-success btn-sm active mt-1 mb-5 shadow"
+                                   role="button" aria-pressed="true">Mokėjimai</a>
+
+                            </div>
+                        </div>
+                        <br>
+                        <h3 class="text-success"> {{ profile.name }} &nbsp; {{ profile.surname }} </h3>
+                        <p class="text-muted border-bottom">{{ profile.email }}</p>
+
+                        <div>Su mumis nuo:</div>
+                        <div>{{ profile.createdOn|date("Y/m/d") }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
