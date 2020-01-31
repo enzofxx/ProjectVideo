@@ -1,0 +1,60 @@
+{% extends "template.php.twig" %}
+
+
+
+{% block content %}
+
+    <div class="container register-form">
+        <div class="form">
+
+            <div class="note">
+                <h1>Registracija</h1>
+                <h4>Prieš perkant kursus prašome užsiregistruoti</h4>
+            </div>
+        <form method="post" action="{{ route('purchases.store') }}">
+            {{ method('PUT') }}
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="name" class="form-control" placeholder="Jūsų vardas" name="name" />
+                        </div>
+                        <div class="form-group">
+                            <input type="name" class="form-control" placeholder="Jūsų pavardė" name="surname" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Jūsų el. paštas" name="email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Įveskite slaptažodį" name="password" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Pakartokite slaptažodį" name="secondpassword" />
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btnSubmit">Registruotis</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -46,6 +46,9 @@ Router::get("/feedback", "Publics\PublicsController@feedback")->name('feedback')
 Router::get("/course/{course}", "CourseController@show")->name('course.show');
 Router::get("/course", "CourseController@index")->name('course.index');
 
+/* Purchases */
+Router::get("/register", "Purchases\PurchaseController@register")->name('purchase.register');
+Router::put("", "Purchases\PurchaseController@store")->name('purchases.store');
 
 
 /* EXAMPLES */

@@ -139,6 +139,29 @@ header a:hover{
   border-radius: 5px;
 }
 
+#bundle {
+  padding: 10px 0;
+  color: blue;
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 1;
+}
+
+#bundle div {
+  font-size: 32px;
+  background-color: lime;
+  width: 350px;
+  text-align: center;
+  align-content: center;
+  border-radius: 20px;
+}
+
+#bundle a {
+  text-decoration: none;
+  -webkit-animation:$animation;
+}
+
 #subscribeSubmitButton{
   height: 38px;
   background: $button-color;
@@ -148,6 +171,8 @@ header a:hover{
   border-radius: 5px;
   -webkit-animation:$animation;
 }
+
+
 
 /* courses */
 
