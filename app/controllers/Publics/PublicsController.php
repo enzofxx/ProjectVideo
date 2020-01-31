@@ -48,9 +48,12 @@ class PublicsController extends Controller
     {
         $route = 'home';
         $courses = Courses::select('*')->getAll();
+        $user = Service::get('session')->get('user');
+
         return view('public/index', [
             'courses' => $courses,
             'route' => $route,
+            'user' => $user,
             'loginUrl' => Service::get('googleAPI')->getLoginUrl()
             ]);
     }
