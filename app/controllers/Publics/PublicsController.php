@@ -46,12 +46,17 @@ class PublicsController extends Controller
 
     public function index()
     {
+        $userRole = Service::get('session')->get('user')->role ?? null;
         $route = 'home';
+        $loginurl = Service::get('googleAPI')->getLoginUrl() ?? null;
+//        var_dump($loginurl);
+//       die();
         $courses = Courses::select('*')->getAll();
         return view('public/index', [
+            'userRole' => $userRole,
             'courses' => $courses,
             'route' => $route,
-            'loginUrl' => Service::get('googleAPI')->getLoginUrl()
+            'loginUrl' => $loginurl,
             ]);
     }
 
