@@ -7,6 +7,7 @@ namespace App\Core\Support\Helpers;
 use App\Core\Config;
 use App\Core\Data;
 use App\Core\Router;
+use App\Core\Service;
 use App\Core\Support\Interfaces\Renderable;
 use Twig\Markup;
 
@@ -50,7 +51,13 @@ class View implements Renderable
         $viewPath = '../resources/views/' . $name;
 
         $twigLoader = new \Twig\Loader\FilesystemLoader('../resources/views');
-        $twig = new \Twig\Environment($twigLoader);
+        $twig = new \Twig\Environment($twigLoader, ['debug' => true]);
+
+        //  Twig debug extension, in twig use {{ dump(variable) }}
+        $twig->addExtension(new \Twig\Extension\DebugExtension());
+
+        // Global session
+        $twig->addGlobal('session', Service::get('session')->all());
 
         // Asset function
         $twig->addFunction(new \Twig\TwigFunction('asset', function (?string $asset): ?string {

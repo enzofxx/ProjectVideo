@@ -30,7 +30,7 @@ abstract class Model
 
     public static function find($id)
     {
-        return self::createBuilder(self::getTable())->where('deleted', '=', 0)->find($id);
+        return self::createBuilder(self::getTable())->find($id);
     }
 
     public static function select($fields)

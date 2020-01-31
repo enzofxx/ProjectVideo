@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Controllers\Publics;
 
 use App\Controllers\Controller;
 use App\Core\Service;
 use App\Courses;
 use App\Users;
+use http\Client\Curl\User;
 
 class PublicsController extends Controller
 {
@@ -21,9 +21,11 @@ class PublicsController extends Controller
                 ->where("email", '=', "'" . $enteredEmail . "'")
                 ->get();
 
-            if($enteredPassword == $user->password){
-                Service::get('session')->set('role', $user->role);
+            $password = $user->password ?? '';
 
+            if($enteredPassword == $password){
+                $user = Users::select('*')->where('email', '=', "'" . $enteredEmail . "'")->get();
+                Service::get('session')->set('user', $user);
                 if($user->role == 'admin'){
                     return redirect()->route('admin.index');
                 } else {
@@ -49,7 +51,8 @@ class PublicsController extends Controller
         return view('public/index', [
             'courses' => $courses,
             'route' => $route,
-        ]);
+            'loginUrl' => Service::get('googleAPI')->getLoginUrl()
+            ]);
     }
 
     public function about()
@@ -57,6 +60,7 @@ class PublicsController extends Controller
         $route = 'about';
         return view('public/aboutUs', [
             'route' => $route,
+            'loginUrl' => Service::get('googleAPI')->getLoginUrl()
         ]);
     }
 
@@ -65,6 +69,13 @@ class PublicsController extends Controller
         $route = 'feedback';
         return view('public/feedback', [
             'route' => $route,
+            'loginUrl' => Service::get('googleAPI')->getLoginUrl()
         ]);
+    }
+
+    public function logout()
+    {
+        Service::get('session')->invalidate();
+        return redirect()->route('home');
     }
 }

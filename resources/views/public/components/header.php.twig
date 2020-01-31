@@ -16,9 +16,17 @@
                 <li {{ route == 'feedback' ? 'class="current"' : '' }}>
                     <a href="{{ route('feedback') }}">Atsiliepimai</a>
                 </li>
+                {% if session.access_token %}
+                    <li>
+                        Prisijungta kaip: {{ session.givenName }}
+
+                        <a href="{{route('google.logout')}} ">logout</a>
+                    </li>
+                {% else %}
                 <li>
                     <a class="btn" data-popup-open="popup-1" href="#">Prisijungti</a>
                 </li>
+                {% endif %}
             </ul>
         </nav>
     </div>

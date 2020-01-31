@@ -22,19 +22,24 @@ class App {
 
         // Initialising HttpFoundation
         $request = Request::createFromGlobals();
-
         $dependencies = [
             'App\Core\App' => $this,
             'App\Core\Router' => $router,
             'Symfony\Component\HttpFoundation\Request' => $request
         ];
 
+        // Test MiddleWare
+        if($router->getMiddleware() != null) {
+            $test = new Middleware($router->getMiddleware(), $router->getRoutes());
+            if($test->response != true ) {
+                return redirect('')->render('home');
+            }
+        }
         // Getting route controller name
         $className = "App\\Controllers\\" . $router->getRoute()->getController();
 
         // Getting route function name
         $functionName = $router->getRoute()->getFunction();
-
         // Checking if route controller class autoloaded
         if (class_exists($className)) {
 
@@ -44,7 +49,6 @@ class App {
             $function = new \ReflectionMethod($className, $functionName);
             $routeParameters = $router->getRoute()->getParameterValues();
             $parameters = [];
-
             // Injecting dependencies and parameters
             foreach ($function->getParameters() as $parameter) {
                 $type = $parameter->getType();
@@ -58,10 +62,8 @@ class App {
                 }
 
             }
-
             // Calling route function with injected parameters
             $response = call_user_func_array([$this->current_controller, $functionName], $parameters);
-
             if (isset($response)) {
                 if ($response instanceof Renderable) {
                     $response->render();

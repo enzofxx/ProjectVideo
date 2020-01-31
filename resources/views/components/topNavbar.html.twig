@@ -1,11 +1,13 @@
 <!-- Top Navigation -->
 
 <nav class="navbar navbar-dark bg-dark p-0 shadow">
-    <a class="navbar-brand text-lg-center" href="{{ route('home') }}"><i class="fas fa-chalkboard"></i> Anglų kalbos
+    <a class="navbar-brand text-lg-center" href="{{ route('course.index') }}"><i class="fas fa-chalkboard"></i> Anglų kalbos
         kursai</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item">
-            <a class="nav-link" data-toggle="modal" data-target="#modalLoginForm" href="">Prisijungti</a>
+            <a class="text-decoration-none text-secondary" href="{{ route('home') }}">
+                <i class="fas fa-sign-out-alt h2 float-right"></i>
+            </a>
         </li>
     </ul>
 </nav>
