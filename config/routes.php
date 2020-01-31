@@ -38,7 +38,7 @@ if($currentUSer == 'admin') {
 /* Login */
 Router::post("", "Publics\PublicsController@login")->name('login');
 /* logaut */
-Router::post("/logout", "Publics\PublicsController@logout")->name('logout');
+Router::get("/logout", "Publics\PublicsController@logout")->name('logout');
 /* Index */
 Router::get("", "Publics\PublicsController@index")->name('home');
 /* Google oAuth API */

@@ -27,9 +27,9 @@ class PublicsController extends Controller
                 $user = Users::select('*')->where('email', '=', "'" . $enteredEmail . "'")->get();
                 Service::get('session')->set('user', $user);
                 if($user->role == 'admin'){
-                    return redirect()->route('admin.index');
+                    return redirect('admin')->render('admin.index');
                 } else {
-                    return redirect()->route('course.index');
+                    return redirect('course')->render('course.index');
                 }
             }
         }
