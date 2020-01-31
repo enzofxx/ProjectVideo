@@ -7,7 +7,7 @@
                 <div class="col-12 col-md-6 col-lg-4 justify-content-center text-center">
                     <figure class="figure">
                         <figcaption class="figure-caption">
-                            <a href="{{ route('admin.showCourse', {'courseId':course.id}) }}">
+                            <a href="{{ route('admin.editCourse', {'courseId':course.id}) }}">
                                 <img src="{{ course.picture }}" alt="Figure image{{ course.id }}">
                             </a>
                             <h6>{{ course.name }} <small>({{ course.createdOn }} )</small></h6>
