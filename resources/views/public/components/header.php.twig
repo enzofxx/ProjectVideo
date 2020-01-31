@@ -16,13 +16,24 @@
                 <li {{ route == 'feedback' ? 'class="current"' : '' }}>
                     <a href="{{ route('feedback') }}">Atsiliepimai</a>
                 </li>
+                {% if userRole == 'admin' %}
+                    <li>
+                        <a class="btn" href="{{ route('admin.index') }}">Admin Skydelis</a>
+                    </li>
+                {% endif %}
                 {% if session.access_token %}
                     <li>
                         Prisijungta kaip: {{ session.givenName }}
 
                         <a href="{{route('google.logout')}} ">logout</a>
                     </li>
-                {% else %}
+                {% endif %}
+                {% if userRole == 'user' %}
+                    <li>
+                        <a class="btn" href="{{ route('course.index') }}">Mano Kursai</a>
+                    </li>
+                {% endif %}
+                {% if userRole == null %}
                 <li>
                     <a class="btn" data-popup-open="popup-1" href="#">Prisijungti</a>
                 </li>
