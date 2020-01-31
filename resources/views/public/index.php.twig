@@ -1,16 +1,17 @@
 {% extends "public/components/head.php.twig" %}
 
 {% block content %}
-{% include'public/components/header.php.twig' %}
-<section id="showcase">
-    <div class="container">
-        <h1>Geriausi Kursai Už Geriausia Kaina</h1>
-        <p>Musu kursai - naujos kartos programa. Tai alternatyva universitetiniam išsilavinimui trunkanti tris mėnesius.
-            Mūsų misija - kuo sparčiau suteikti visas reikalingas žinias pradėti suprasti anglų kalbą.
-        </p>
-    </div>
-</section>
-<section id="newsletter">
+    {% include'public/components/header.php.twig' %}
+    <section id="showcase">
+        <div class="container">
+            <h1>Geriausi Kursai Už Geriausia Kaina</h1>
+            <p>Musu kursai - naujos kartos programa. Tai alternatyva universitetiniam išsilavinimui trunkanti tris
+                mėnesius.
+                Mūsų misija - kuo sparčiau suteikti visas reikalingas žinias pradėti suprasti anglų kalbą.
+            </p>
+        </div>
+    </section>
+    <section id="newsletter">
     <div class="container">
         <h1>Užsiregistuok ir laimekite nemokamą kursą</h1>
         <form id="newsletterForm" method="post" action="#"> {#TODO add action and method#}
@@ -18,30 +19,32 @@
             <button id="subscribeSubmitButton" type="submit">Pirmyn</button>
         </form>
     </div>
-</section>
-<section id="bundle">
-    <div class="container">
-        <a href="{{ route('purchase.register') }}">Pirkite visus kursus!!!</a>
-    </div>
-</section>
-<section id="coursesSection">
-    <div class="container">
-        <div id="courseWrapper">
-            {% for course in courses %}
-                <div class="courseBoxes">
-                    <a href="{{ route('course.show', {'course':course.id}) }}">
-                        <img class="courseImg" src="{{ course.picture }}" alt="course nr.{{ course.id }}">
-                        <h3>{{ course.name|length > 30 ? course.name|slice(0, 30) ~ '...' : course.name }}</h3>
-                        <p>{{ course.about|length > 100 ? course.about|slice(0, 100) ~ '...' : course.about }}</p>
-                    </a>
-                </div>
-            {% endfor %}
+        </section>
+    {% if user.id is null %}
+        <section id="bundle">
+            <div class="container">
+                <a href="{{ route('purchase.register') }}">Pirkite visus kursus!!!</a>
+            </div>
+        </section>
+    {% endif %}
+    <section id="coursesSection">
+        <div class="container">
+            <div id="courseWrapper">
+                {% for course in courses %}
+                    <div class="courseBoxes">
+                        <a href="{{ route('course.show', {'course':course.id}) }}">
+                            <img class="courseImg" src="{{ course.picture }}" alt="course nr.{{ course.id }}">
+                            <h3>{{ course.name|length > 30 ? course.name|slice(0, 30) ~ '...' : course.name }}</h3>
+                            <p>{{ course.about|length > 100 ? course.about|slice(0, 100) ~ '...' : course.about }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-</section>
-<footer>
-    <p>
-        CBA Anglų Kalbos Kursai &copy; 2015-{{ "now"|date("Y") }}
-    </p>
-</footer>
+    </section>
+    <footer>
+        <p>
+            CBA Anglų Kalbos Kursai &copy; 2015-{{ "now"|date("Y") }}
+        </p>
+    </footer>
 {% endblock %}
