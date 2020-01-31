@@ -44,6 +44,8 @@ Router::get("", "Publics\PublicsController@index")->name('home');
 /* Google oAuth API */
 Router::get("/google-callback", "Oauth\GoogleController@loginForm")->name('course.gg');
 Router::get("nesvarbu", "Oauth\GoogleController@logout")->name('google.logout');
+Router::get("register", "Purchases\PurchaseController@register")->name('purchase.register');
+Router::put("", "Purchases\PurchaseController@store")->name('purchases.store');
 
 
 
