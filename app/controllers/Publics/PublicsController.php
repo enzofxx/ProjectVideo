@@ -63,8 +63,10 @@ class PublicsController extends Controller
 
     public function about()
     {
+        $userRole = Service::get('session')->get('user')->role ?? null;
         $route = 'about';
         return view('public/aboutUs', [
+            'userRole' => $userRole,
             'route' => $route,
             'loginUrl' => Service::get('googleAPI')->getLoginUrl()
         ]);
@@ -72,8 +74,10 @@ class PublicsController extends Controller
 
     public function feedback()
     {
+        $userRole = Service::get('session')->get('user')->role ?? null;
         $route = 'feedback';
         return view('public/feedback', [
+            'userRole' => $userRole,
             'route' => $route,
             'loginUrl' => Service::get('googleAPI')->getLoginUrl()
         ]);

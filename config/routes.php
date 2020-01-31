@@ -46,6 +46,11 @@ Router::get("googlelogout", "Oauth\GoogleController@logout")->name('google.logou
 Router::get("register", "Purchases\PurchaseController@register")->name('purchase.register');
 Router::put("", "Purchases\PurchaseController@store")->name('purchases.store');
 
+/* About Us */
+Router::get("/about", "Publics\PublicsController@about")->name('about');
+
+/* Feedback */
+Router::get("/feedback", "Publics\PublicsController@feedback")->name('feedback');
 
 
 
@@ -55,11 +60,6 @@ if($currentUSer == 'admin' || $currentUSer == 'user'){
     Router::get("/profile", "UserController@profile")->name('user.profile');
     Router::get("/profile/{payment}", "UserController@paymentShow")->name('user.payments.show');
 
-    /* About Us */
-    Router::get("/about", "Publics\PublicsController@about")->name('about');
-
-    /* Feedback */
-    Router::get("/feedback", "Publics\PublicsController@feedback")->name('feedback');
 
     /* Courses */
     Router::get("/course/{course}", "CourseController@show")->name('course.show');
