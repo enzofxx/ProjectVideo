@@ -15,7 +15,6 @@ if($currentUSer == 'admin') {
     /* Course */
     Router::get("/admin/course/add", "Admin\CourseController@addCourse")->name('admin.addCourse');
     Router::put("/admin/course/add", "Admin\CourseController@storeCourse")->name('admin.storeCourse');
-    Router::get("/admin/course/{courseId}", "Admin\CourseController@show")->name('admin.showCourse');
     Router::get("/admin/course/{courseId}/edit", "Admin\CourseController@edit")->name('admin.editCourse');
     Router::patch("/admin/course/{courseId}/edit", "Admin\CourseController@updateCourse")->name('admin.updateCourse');
     Router::get("/admin/addvideo", "Admin\CourseController@addvideo")->name('admin.addVideo');
@@ -38,7 +37,7 @@ if($currentUSer == 'admin') {
 /* Login */
 Router::post("", "Publics\PublicsController@login")->name('login');
 /* logaut */
-Router::post("/logout", "Publics\PublicsController@logout")->name('logout');
+Router::get("/logout", "Publics\PublicsController@logout")->name('logout');
 /* Index */
 Router::get("", "Publics\PublicsController@index")->name('home');
 /* Google oAuth API */
