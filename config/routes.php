@@ -3,11 +3,11 @@
 use App\Core\Router;
 use App\Core\Service;
 
-$userRole = Service::get('session')->get('user')->role ?? null;
+$currentUSer = Service::get('session')->get('user')->role ?? null;
 
-/////////////////////////////////// ADMIN SITE ROUTES /////////////////////////////////
-if($userRole == 'admin')
-{
+
+////////////////////////////// ONLY ADMIN ROUTES////////////////////
+if($currentUSer == 'admin') {
     /*---- BackOffice ----*/
     /* Index */
     Router::get("/admin", "Admin\IndexController@index")->name('admin.index');
@@ -26,19 +26,33 @@ if($userRole == 'admin')
 
     /* Video Statistics */
     Router::get("/admin/videostats", "Admin\VideoStatsController@index")->name('admin.videostats');
-    Router::get("/admin/videostats/page", "Admin\VideoStatsController@userPagination")->name('admin.videostats.page');
+    Router::get("admin/videostats/page", "Admin\VideoStatsController@userPagination")->name('admin.videostats.page');
 
     /* Income */
     Router::get("/admin/income", "Admin\IncomeController@index")->name('admin.income');
-
 }
-//////////////////////////// USER SITE ROUTES //////////////////////////////////
-if($userRole == 'admin' || $userRole == 'user')
-{
-    /*---- FrontOffice ----*/
-    Router::get("/profile/{profile}", "UserController@profile")->name('user.profile');
-    Router::get("/profile/{profile}/payments", "UserController@payments")->name('user.payments');
-    Router::get("/profile/{profile}/payments/{payment}", "UserController@paymentShow")->name('user.payments.show');
+
+
+
+////////////////////////// ONLY PUBLIC ROUTES////////////////////////////////////////
+/* Login */
+Router::post("", "Publics\PublicsController@login")->name('login');
+/* logaut */
+Router::post("/logout", "Publics\PublicsController@logout")->name('logout');
+/* Index */
+Router::get("", "Publics\PublicsController@index")->name('home');
+/* Google oAuth API */
+Router::get("/google-callback", "Oauth\GoogleController@loginForm")->name('course.gg');
+Router::get("nesvarbu", "Oauth\GoogleController@logout")->name('google.logout');
+
+
+
+
+////////////////////////////// ONLY LOGINED USSERS ROUTES //////////////////////////////////////
+if($currentUSer == 'admin' || $currentUSer == 'user'){
+    Router::get("/course/{course}", "CourseController@show")->name('course.show');
+    Router::get("/profile", "UserController@profile")->name('user.profile');
+    Router::get("/profile/{payment}", "UserController@paymentShow")->name('user.payments.show');
 
     /* About Us */
     Router::get("/about", "Publics\PublicsController@about")->name('about');
@@ -49,18 +63,16 @@ if($userRole == 'admin' || $userRole == 'user')
     /* Courses */
     Router::get("/course/{course}", "CourseController@show")->name('course.show');
     Router::get("/course", "CourseController@index")->name('course.index');
+
 }
-///////////////////////////// PUBLIC ROUTES /////////////////////////////////////
-/* Google oAuth API */
-Router::get("/google-callback", "Oauth\GoogleController@loginForm")->name('course.gg');
-Router::get("nesvarbu", "Oauth\GoogleController@logout")->name('google.logout');
-
-/* Login */
-Router::post("", "Publics\PublicsController@login")->name('login');
-/* Logout */
-Router::get("/logout", "Publics\PublicsController@logout")->name('logout');
-
-/* Index */
-Router::get("", "Publics\PublicsController@index")->name('home');
 
 
+
+/* EXAMPLES */
+
+/* API */
+
+/* DocTags */
+//Router::get('/api/doctags', 'DocTagsController@doctags')->name('api.doctags.doctags'); Example route for DocTags axios ajax
+
+/* End of EXAMPLES */
